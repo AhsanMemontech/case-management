@@ -17,6 +17,9 @@
 /.next/
 /out/
 
+# Uploads
+/public/uploads/reports/
+
 # production
 /build
 

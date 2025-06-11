@@ -22,9 +22,6 @@ export async function POST(request: NextRequest) {
 
     // Validate file type
     const allowedTypes = [
-        'application/pdf',
-        'application/msword',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
         'image/jpeg',
         'image/png',
         'image/gif',
@@ -32,15 +29,12 @@ export async function POST(request: NextRequest) {
         'image/tiff',
         'image/bmp',
         'image/svg+xml',
-        'image/x-icon',
-        'application/vnd.ms-excel',
-        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
-        'text/plain'
+        'image/x-icon'
     ];
   
     if (!allowedTypes.includes(file.type)) {
     return NextResponse.json(
-        { error: 'Invalid file type. Only PDF, Word documents, Excel files, text files, and images (JPG, PNG, GIF, WebP, TIFF, BMP, SVG, ICO) are allowed.' },
+        { error: 'Invalid file type. Only images (JPG, PNG, GIF, WebP, TIFF, BMP, SVG, ICO) are allowed.' },
         { status: 400 }
     );
     }
