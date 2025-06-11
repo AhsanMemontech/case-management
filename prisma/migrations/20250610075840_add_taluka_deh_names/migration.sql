@@ -6,7 +6,7 @@
 
 */
 -- AlterTable
-ALTER TABLE `case` DROP COLUMN `deh`,
+ALTER TABLE `Case` DROP COLUMN `deh`,
     DROP COLUMN `taluka`,
     ADD COLUMN `dehId` VARCHAR(191) NULL,
     ADD COLUMN `talukaId` VARCHAR(191) NULL;
