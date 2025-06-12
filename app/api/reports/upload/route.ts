@@ -29,14 +29,15 @@ export async function POST(request: NextRequest) {
         'image/tiff',
         'image/bmp',
         'image/svg+xml',
-        'image/x-icon'
+        'image/x-icon',
+        'text/plain'
     ];
   
     if (!allowedTypes.includes(file.type)) {
-    return NextResponse.json(
-        { error: 'Invalid file type. Only images (JPG, PNG, GIF, WebP, TIFF, BMP, SVG, ICO) are allowed.' },
-        { status: 400 }
-    );
+      return NextResponse.json(
+          { error: 'Invalid file type. Only text files (.txt) & images (JPG, PNG, GIF, WebP, TIFF, BMP, SVG, ICO) are allowed.' },
+          { status: 400 }
+      );
     }
 
     // Validate file size (max 10MB)
