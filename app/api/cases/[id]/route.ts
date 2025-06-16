@@ -29,7 +29,7 @@ export async function GET(
             assignedToUser: true
           }
         },
-        evidences: true,
+        memos: true,
         notes: true,
         forwardedToMukhtiarkar: {
           select: {
@@ -75,12 +75,13 @@ export async function PUT(
       talukaId, 
       dehId,
       dateOfInstitution, 
+      orderOfDate,
       nextDate, 
       location, 
       description,
       //involvedOfficers,
       //involvedPersons,
-      evidences,
+      memos,
       notes
     } = data;
     
@@ -97,6 +98,7 @@ export async function PUT(
         dehId,
         dateOfInstitution: new Date(dateOfInstitution),
         nextDate: new Date(nextDate),
+        orderOfDate: new Date(orderOfDate),
         location,
         description
         // Handle relationships in a transaction if needed
@@ -104,7 +106,7 @@ export async function PUT(
       include: {
         //involvedOfficers: true,
         //involvedPersons: true,
-        evidences: true,
+        memos: true,
         notes: true,
       },
     });

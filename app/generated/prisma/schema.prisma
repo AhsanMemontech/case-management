@@ -24,6 +24,7 @@ model Case {
   status            String?
   priority          String?
   dateOfInstitution DateTime?
+  orderOfDate       DateTime?
   nextDate          DateTime?
   location          String?
   talukaId          String? // Foreign key to Taluka
@@ -54,15 +55,15 @@ model Case {
 
   // Relations
   reports   Report[]
-  evidences Evidences[]
+  memos     Memos[]
   notes     Notes[]
   userCases UserCases[]
 }
 
-model Evidences {
+model Memos {
   id            String    @id @default(uuid())
   code          String
-  type          String?
+  filePath      String?
   description   String?   @db.Text
   dateCollected DateTime  @default(now())
   caseId        String

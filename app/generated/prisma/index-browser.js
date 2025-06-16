@@ -125,6 +125,7 @@ exports.Prisma.CaseScalarFieldEnum = {
   status: 'status',
   priority: 'priority',
   dateOfInstitution: 'dateOfInstitution',
+  orderOfDate: 'orderOfDate',
   nextDate: 'nextDate',
   location: 'location',
   talukaId: 'talukaId',
@@ -144,10 +145,10 @@ exports.Prisma.CaseScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
-exports.Prisma.EvidencesScalarFieldEnum = {
+exports.Prisma.MemosScalarFieldEnum = {
   id: 'id',
   code: 'code',
-  type: 'type',
+  filePath: 'filePath',
   description: 'description',
   dateCollected: 'dateCollected',
   caseId: 'caseId',
@@ -256,10 +257,10 @@ exports.Prisma.CaseOrderByRelevanceFieldEnum = {
   forwardedByName: 'forwardedByName'
 };
 
-exports.Prisma.EvidencesOrderByRelevanceFieldEnum = {
+exports.Prisma.MemosOrderByRelevanceFieldEnum = {
   id: 'id',
   code: 'code',
-  type: 'type',
+  filePath: 'filePath',
   description: 'description',
   caseId: 'caseId'
 };
@@ -322,7 +323,7 @@ exports.Prisma.LogOrderByRelevanceFieldEnum = {
 
 exports.Prisma.ModelName = {
   Case: 'Case',
-  Evidences: 'Evidences',
+  Memos: 'Memos',
   Notes: 'Notes',
   CaseTypes: 'CaseTypes',
   Taluka: 'Taluka',

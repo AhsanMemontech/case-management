@@ -22,9 +22,6 @@ export async function POST(request: NextRequest) {
 
     // Validate file type
     const allowedTypes = [
-        'application/pdf',
-        'application/msword',
-        'application/vnd.openxmlformats-officedocument.wordprocessingml.document',
         'image/jpeg',
         'image/png',
         'image/gif',
@@ -33,16 +30,14 @@ export async function POST(request: NextRequest) {
         'image/bmp',
         'image/svg+xml',
         'image/x-icon',
-        'application/vnd.ms-excel',
-        'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet',
         'text/plain'
     ];
   
     if (!allowedTypes.includes(file.type)) {
-    return NextResponse.json(
-        { error: 'Invalid file type. Only PDF, Word documents, Excel files, text files, and images (JPG, PNG, GIF, WebP, TIFF, BMP, SVG, ICO) are allowed.' },
-        { status: 400 }
-    );
+      return NextResponse.json(
+          { error: 'Invalid file type. Only text files (.txt) & images (JPG, PNG, GIF, WebP, TIFF, BMP, SVG, ICO) are allowed.' },
+          { status: 400 }
+      );
     }
 
     // Validate file size (max 10MB)
