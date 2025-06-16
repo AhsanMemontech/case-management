@@ -642,7 +642,7 @@ export default function EditCasePage() {
                     <div className="space-y-3">
                       {memos.map(item => (
                         <div key={item.id ?? item.code ?? ''} className="flex items-center justify-between bg-white p-3 rounded shadow-sm">
-                        {item.filePath && (
+                        {/* {item.filePath && (
                           <div className='uploadedMemo'>
                             {item.filePath?.split('.').pop() !== 'txt' && (
                               <div className='flex'
@@ -679,7 +679,7 @@ export default function EditCasePage() {
                               </a>
                             )}
                           </div>
-                        )}
+                        )} */}
                           <div>
                             <div className="text-sm text-gray-500">
                               <span title={item.description}>
