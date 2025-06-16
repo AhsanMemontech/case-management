@@ -7,6 +7,7 @@ export type Cases = {
     taluka?: { name: string };
     deh?: { name: string };
     dateOfInstitution?: string;
+    orderOfDate?: string;
     nextDate?: string;
     location?: string;
     description?: string;
@@ -40,14 +41,16 @@ export type Cases = {
           role: string;
         }
       }>;
-    evidences?: Evidences[];
+    memos?: Memos[];
     notes?: Notes[];
   };
 
-export type Evidences = {
+export type Memos = {
     id?: string;
     code?: string;
-    type?: string;
+    filePath?: string;
+    file?: File;
+    caseId: string;
     description?: string;
     dateCollected?: string;
     createdAt?: string;

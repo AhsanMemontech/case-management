@@ -1,25 +1,45 @@
 'use client';
 import React, { useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { Evidences } from '../interface/types';
+import { Memos } from '../interface/types';
 
-type EditEvidenceModalProps = {
-  evidence: Evidences;
-  onEvidenceUpdated: (updatedEvidence: Evidences) => void;
+type EditMemoModalProps = {
+  memo: Memos;
+  onMemoUpdated: (updatedMemo: Memos) => void;
 };
 
-export default function EditEvidenceModal({ evidence, onEvidenceUpdated }: EditEvidenceModalProps) {
+export default function EditMemoModal({ memo, onMemoUpdated }: EditMemoModalProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const [formData, setFormData] = useState<Evidences>({...evidence});
+  const [formData, setFormData] = useState<Memos>({...memo});
 
   function closeModal() {
     setIsOpen(false);
   }
 
   function openModal() {
-    setFormData({...evidence});
+    setFormData({...memo});
     setIsOpen(true);
   }
+
+  const [isUploading, setIsUploading] = useState(false);
+
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    if (e.target.files && e.target.files[0]) {
+      setSelectedFile(e.target.files[0]);
+    }
+  };
+
+  // Create a ref for the hidden file input
+  const fileInputRef = React.useRef<HTMLInputElement>(null);
+
+  // Function to trigger file input click
+  const triggerFileInput = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.click();
+    }
+  };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
@@ -31,26 +51,50 @@ export default function EditEvidenceModal({ evidence, onEvidenceUpdated }: EditE
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+    setIsUploading(true);
+
+    if (!selectedFile) {
+      setIsUploading(false);
+      alert('Please select a file to upload');
+      return;
+    }
+
+    if (!formData.description) {
+      setIsUploading(false);
+      alert('Please enter a description');
+      return;
+    }
+
+    const requestData = new FormData();
+    requestData.append('filePath', selectedFile!);
+    requestData.append('code', memo.code!);
+    requestData.append('caseId', memo.caseId);
+    requestData.append('fileName', selectedFile?.name!);
+    requestData.append('description', formData.description!);
+
     try {
-      const response = await fetch(`/api/evidences/${formData.id}`, {
+      const response = await fetch(`/api/memo/${formData.id}`, {
         method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+        body: requestData,
       });
       
       if (!response.ok) {
-        throw new Error('Failed to update evidence');
+        throw new Error('Failed to update memo');
       }
       
-      const updatedEvidence = await response.json();
+      const updatedMemo = await response.json();
       
-      onEvidenceUpdated({...updatedEvidence});
+      // Reset file state
+      setSelectedFile(null);
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
+      onMemoUpdated({...updatedMemo});
       closeModal();
     } catch (error) {
-      console.error('Error updating evidence:', error);
+      console.error('Error updating memo:', error);
+    } finally {
+      setIsUploading(false);
     }
   };
 
@@ -96,30 +140,37 @@ export default function EditEvidenceModal({ evidence, onEvidenceUpdated }: EditE
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    Edit Evidence
+                    Edit Memo Of Complaint
                   </Dialog.Title>
                   
                   <div className="mt-4">
                     <div className="space-y-4">
-                      <div>
-                        <label htmlFor="type" className="block text-sm font-medium text-gray-700">Type</label>
-                        <select
-                          name="type"
-                          id="type"
-                          value={formData.type}
-                          onChange={handleChange}
-                          className="mt-1 block w-full rounded-md border-gray-300 text-gray-600 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
-                          required
+                    <input
+                            type="file"
+                            ref={fileInputRef}
+                            onChange={handleFileChange}
+                            style={{ display: 'none' }}
+                            accept=".jpg,.jpeg,.png,.txt"
+                          />
+                    <div className="mb-4">
+                        <label htmlFor="memoReport" className="block text-sm font-medium text-gray-700 mb-1">
+                          Upload Report
+                        </label>
+                        <button 
+                          className="px-3 py-1 bg-blue-600 text-white text-sm rounded hover:bg-blue-700 disabled:opacity-50 disabled:cursor-not-allowed"
+                          onClick={() => triggerFileInput()}
+                          disabled={isUploading}
                         >
-                          <option value="Photograph">Photograph</option>
-                          <option value="Video">Video</option>
-                          <option value="Audio">Audio</option>
-                          <option value="Document">Document</option>
-                          <option value="Fingerprint">Fingerprint</option>
-                          <option value="Physical Item">Physical Item</option>
-                          <option value="Digital">Digital</option>
-                          <option value="Other">Other</option>
-                        </select>
+                          {isUploading ? (
+                            <span className="flex items-center">
+                              <svg className="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                                <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                              </svg>
+                              Uploading...
+                            </span>
+                          ) : 'Upload'}
+                        </button>
                       </div>
                       
                       <div>

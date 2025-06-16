@@ -19,10 +19,10 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  */
 export type Case = $Result.DefaultSelection<Prisma.$CasePayload>
 /**
- * Model Evidences
+ * Model Memos
  * 
  */
-export type Evidences = $Result.DefaultSelection<Prisma.$EvidencesPayload>
+export type Memos = $Result.DefaultSelection<Prisma.$MemosPayload>
 /**
  * Model Notes
  * 
@@ -200,14 +200,14 @@ export class PrismaClient<
   get case(): Prisma.CaseDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.evidences`: Exposes CRUD operations for the **Evidences** model.
+   * `prisma.memos`: Exposes CRUD operations for the **Memos** model.
     * Example usage:
     * ```ts
-    * // Fetch zero or more Evidences
-    * const evidences = await prisma.evidences.findMany()
+    * // Fetch zero or more Memos
+    * const memos = await prisma.memos.findMany()
     * ```
     */
-  get evidences(): Prisma.EvidencesDelegate<ExtArgs, ClientOptions>;
+  get memos(): Prisma.MemosDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.notes`: Exposes CRUD operations for the **Notes** model.
@@ -729,7 +729,7 @@ export namespace Prisma {
 
   export const ModelName: {
     Case: 'Case',
-    Evidences: 'Evidences',
+    Memos: 'Memos',
     Notes: 'Notes',
     CaseTypes: 'CaseTypes',
     Taluka: 'Taluka',
@@ -756,7 +756,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "case" | "evidences" | "notes" | "caseTypes" | "taluka" | "deh" | "user" | "userCases" | "report" | "log"
+      modelProps: "case" | "memos" | "notes" | "caseTypes" | "taluka" | "deh" | "user" | "userCases" | "report" | "log"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -826,69 +826,69 @@ export namespace Prisma {
           }
         }
       }
-      Evidences: {
-        payload: Prisma.$EvidencesPayload<ExtArgs>
-        fields: Prisma.EvidencesFieldRefs
+      Memos: {
+        payload: Prisma.$MemosPayload<ExtArgs>
+        fields: Prisma.MemosFieldRefs
         operations: {
           findUnique: {
-            args: Prisma.EvidencesFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EvidencesPayload> | null
+            args: Prisma.MemosFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemosPayload> | null
           }
           findUniqueOrThrow: {
-            args: Prisma.EvidencesFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EvidencesPayload>
+            args: Prisma.MemosFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemosPayload>
           }
           findFirst: {
-            args: Prisma.EvidencesFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EvidencesPayload> | null
+            args: Prisma.MemosFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemosPayload> | null
           }
           findFirstOrThrow: {
-            args: Prisma.EvidencesFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EvidencesPayload>
+            args: Prisma.MemosFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemosPayload>
           }
           findMany: {
-            args: Prisma.EvidencesFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EvidencesPayload>[]
+            args: Prisma.MemosFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemosPayload>[]
           }
           create: {
-            args: Prisma.EvidencesCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EvidencesPayload>
+            args: Prisma.MemosCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemosPayload>
           }
           createMany: {
-            args: Prisma.EvidencesCreateManyArgs<ExtArgs>
+            args: Prisma.MemosCreateManyArgs<ExtArgs>
             result: BatchPayload
           }
           delete: {
-            args: Prisma.EvidencesDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EvidencesPayload>
+            args: Prisma.MemosDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemosPayload>
           }
           update: {
-            args: Prisma.EvidencesUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EvidencesPayload>
+            args: Prisma.MemosUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemosPayload>
           }
           deleteMany: {
-            args: Prisma.EvidencesDeleteManyArgs<ExtArgs>
+            args: Prisma.MemosDeleteManyArgs<ExtArgs>
             result: BatchPayload
           }
           updateMany: {
-            args: Prisma.EvidencesUpdateManyArgs<ExtArgs>
+            args: Prisma.MemosUpdateManyArgs<ExtArgs>
             result: BatchPayload
           }
           upsert: {
-            args: Prisma.EvidencesUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$EvidencesPayload>
+            args: Prisma.MemosUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$MemosPayload>
           }
           aggregate: {
-            args: Prisma.EvidencesAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateEvidences>
+            args: Prisma.MemosAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMemos>
           }
           groupBy: {
-            args: Prisma.EvidencesGroupByArgs<ExtArgs>
-            result: $Utils.Optional<EvidencesGroupByOutputType>[]
+            args: Prisma.MemosGroupByArgs<ExtArgs>
+            result: $Utils.Optional<MemosGroupByOutputType>[]
           }
           count: {
-            args: Prisma.EvidencesCountArgs<ExtArgs>
-            result: $Utils.Optional<EvidencesCountAggregateOutputType> | number
+            args: Prisma.MemosCountArgs<ExtArgs>
+            result: $Utils.Optional<MemosCountAggregateOutputType> | number
           }
         }
       }
@@ -1505,7 +1505,7 @@ export namespace Prisma {
   }
   export type GlobalOmitConfig = {
     case?: CaseOmit
-    evidences?: EvidencesOmit
+    memos?: MemosOmit
     notes?: NotesOmit
     caseTypes?: CaseTypesOmit
     taluka?: TalukaOmit
@@ -1609,14 +1609,14 @@ export namespace Prisma {
 
   export type CaseCountOutputType = {
     reports: number
-    evidences: number
+    memos: number
     notes: number
     userCases: number
   }
 
   export type CaseCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     reports?: boolean | CaseCountOutputTypeCountReportsArgs
-    evidences?: boolean | CaseCountOutputTypeCountEvidencesArgs
+    memos?: boolean | CaseCountOutputTypeCountMemosArgs
     notes?: boolean | CaseCountOutputTypeCountNotesArgs
     userCases?: boolean | CaseCountOutputTypeCountUserCasesArgs
   }
@@ -1642,8 +1642,8 @@ export namespace Prisma {
   /**
    * CaseCountOutputType without action
    */
-  export type CaseCountOutputTypeCountEvidencesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: EvidencesWhereInput
+  export type CaseCountOutputTypeCountMemosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MemosWhereInput
   }
 
   /**
@@ -1803,6 +1803,7 @@ export namespace Prisma {
     status: string | null
     priority: string | null
     dateOfInstitution: Date | null
+    orderOfDate: Date | null
     nextDate: Date | null
     location: string | null
     talukaId: string | null
@@ -1830,6 +1831,7 @@ export namespace Prisma {
     status: string | null
     priority: string | null
     dateOfInstitution: Date | null
+    orderOfDate: Date | null
     nextDate: Date | null
     location: string | null
     talukaId: string | null
@@ -1857,6 +1859,7 @@ export namespace Prisma {
     status: number
     priority: number
     dateOfInstitution: number
+    orderOfDate: number
     nextDate: number
     location: number
     talukaId: number
@@ -1886,6 +1889,7 @@ export namespace Prisma {
     status?: true
     priority?: true
     dateOfInstitution?: true
+    orderOfDate?: true
     nextDate?: true
     location?: true
     talukaId?: true
@@ -1913,6 +1917,7 @@ export namespace Prisma {
     status?: true
     priority?: true
     dateOfInstitution?: true
+    orderOfDate?: true
     nextDate?: true
     location?: true
     talukaId?: true
@@ -1940,6 +1945,7 @@ export namespace Prisma {
     status?: true
     priority?: true
     dateOfInstitution?: true
+    orderOfDate?: true
     nextDate?: true
     location?: true
     talukaId?: true
@@ -2040,6 +2046,7 @@ export namespace Prisma {
     status: string | null
     priority: string | null
     dateOfInstitution: Date | null
+    orderOfDate: Date | null
     nextDate: Date | null
     location: string | null
     talukaId: string | null
@@ -2084,6 +2091,7 @@ export namespace Prisma {
     status?: boolean
     priority?: boolean
     dateOfInstitution?: boolean
+    orderOfDate?: boolean
     nextDate?: boolean
     location?: boolean
     talukaId?: boolean
@@ -2105,7 +2113,7 @@ export namespace Prisma {
     deh?: boolean | Case$dehArgs<ExtArgs>
     forwardedToMukhtiarkar?: boolean | Case$forwardedToMukhtiarkarArgs<ExtArgs>
     reports?: boolean | Case$reportsArgs<ExtArgs>
-    evidences?: boolean | Case$evidencesArgs<ExtArgs>
+    memos?: boolean | Case$memosArgs<ExtArgs>
     notes?: boolean | Case$notesArgs<ExtArgs>
     userCases?: boolean | Case$userCasesArgs<ExtArgs>
     _count?: boolean | CaseCountOutputTypeDefaultArgs<ExtArgs>
@@ -2121,6 +2129,7 @@ export namespace Prisma {
     status?: boolean
     priority?: boolean
     dateOfInstitution?: boolean
+    orderOfDate?: boolean
     nextDate?: boolean
     location?: boolean
     talukaId?: boolean
@@ -2140,13 +2149,13 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type CaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "code" | "title" | "caseType" | "status" | "priority" | "dateOfInstitution" | "nextDate" | "location" | "talukaId" | "dehId" | "description" | "mukhtiarkarACReportUploaded" | "mukhtiarkarACReportPath" | "evacueePropertyReportUploaded" | "evacueePropertyReportPath" | "barrageBranchReportUploaded" | "barrageBranchReportPath" | "newspaperPublicationUploaded" | "newspaperPublicationPath" | "forwardedToMukhtiarkarId" | "forwardedByName" | "createdAt" | "updatedAt", ExtArgs["result"]["case"]>
+  export type CaseOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "code" | "title" | "caseType" | "status" | "priority" | "dateOfInstitution" | "orderOfDate" | "nextDate" | "location" | "talukaId" | "dehId" | "description" | "mukhtiarkarACReportUploaded" | "mukhtiarkarACReportPath" | "evacueePropertyReportUploaded" | "evacueePropertyReportPath" | "barrageBranchReportUploaded" | "barrageBranchReportPath" | "newspaperPublicationUploaded" | "newspaperPublicationPath" | "forwardedToMukhtiarkarId" | "forwardedByName" | "createdAt" | "updatedAt", ExtArgs["result"]["case"]>
   export type CaseInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     taluka?: boolean | Case$talukaArgs<ExtArgs>
     deh?: boolean | Case$dehArgs<ExtArgs>
     forwardedToMukhtiarkar?: boolean | Case$forwardedToMukhtiarkarArgs<ExtArgs>
     reports?: boolean | Case$reportsArgs<ExtArgs>
-    evidences?: boolean | Case$evidencesArgs<ExtArgs>
+    memos?: boolean | Case$memosArgs<ExtArgs>
     notes?: boolean | Case$notesArgs<ExtArgs>
     userCases?: boolean | Case$userCasesArgs<ExtArgs>
     _count?: boolean | CaseCountOutputTypeDefaultArgs<ExtArgs>
@@ -2159,7 +2168,7 @@ export namespace Prisma {
       deh: Prisma.$DehPayload<ExtArgs> | null
       forwardedToMukhtiarkar: Prisma.$UserPayload<ExtArgs> | null
       reports: Prisma.$ReportPayload<ExtArgs>[]
-      evidences: Prisma.$EvidencesPayload<ExtArgs>[]
+      memos: Prisma.$MemosPayload<ExtArgs>[]
       notes: Prisma.$NotesPayload<ExtArgs>[]
       userCases: Prisma.$UserCasesPayload<ExtArgs>[]
     }
@@ -2171,6 +2180,7 @@ export namespace Prisma {
       status: string | null
       priority: string | null
       dateOfInstitution: Date | null
+      orderOfDate: Date | null
       nextDate: Date | null
       location: string | null
       talukaId: string | null
@@ -2532,7 +2542,7 @@ export namespace Prisma {
     deh<T extends Case$dehArgs<ExtArgs> = {}>(args?: Subset<T, Case$dehArgs<ExtArgs>>): Prisma__DehClient<$Result.GetResult<Prisma.$DehPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     forwardedToMukhtiarkar<T extends Case$forwardedToMukhtiarkarArgs<ExtArgs> = {}>(args?: Subset<T, Case$forwardedToMukhtiarkarArgs<ExtArgs>>): Prisma__UserClient<$Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     reports<T extends Case$reportsArgs<ExtArgs> = {}>(args?: Subset<T, Case$reportsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$ReportPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    evidences<T extends Case$evidencesArgs<ExtArgs> = {}>(args?: Subset<T, Case$evidencesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EvidencesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    memos<T extends Case$memosArgs<ExtArgs> = {}>(args?: Subset<T, Case$memosArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MemosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     notes<T extends Case$notesArgs<ExtArgs> = {}>(args?: Subset<T, Case$notesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$NotesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     userCases<T extends Case$userCasesArgs<ExtArgs> = {}>(args?: Subset<T, Case$userCasesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$UserCasesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
@@ -2571,6 +2581,7 @@ export namespace Prisma {
     readonly status: FieldRef<"Case", 'String'>
     readonly priority: FieldRef<"Case", 'String'>
     readonly dateOfInstitution: FieldRef<"Case", 'DateTime'>
+    readonly orderOfDate: FieldRef<"Case", 'DateTime'>
     readonly nextDate: FieldRef<"Case", 'DateTime'>
     readonly location: FieldRef<"Case", 'String'>
     readonly talukaId: FieldRef<"Case", 'String'>
@@ -3012,27 +3023,27 @@ export namespace Prisma {
   }
 
   /**
-   * Case.evidences
+   * Case.memos
    */
-  export type Case$evidencesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type Case$memosArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Evidences
+     * Select specific fields to fetch from the Memos
      */
-    select?: EvidencesSelect<ExtArgs> | null
+    select?: MemosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Evidences
+     * Omit specific fields from the Memos
      */
-    omit?: EvidencesOmit<ExtArgs> | null
+    omit?: MemosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EvidencesInclude<ExtArgs> | null
-    where?: EvidencesWhereInput
-    orderBy?: EvidencesOrderByWithRelationInput | EvidencesOrderByWithRelationInput[]
-    cursor?: EvidencesWhereUniqueInput
+    include?: MemosInclude<ExtArgs> | null
+    where?: MemosWhereInput
+    orderBy?: MemosOrderByWithRelationInput | MemosOrderByWithRelationInput[]
+    cursor?: MemosWhereUniqueInput
     take?: number
     skip?: number
-    distinct?: EvidencesScalarFieldEnum | EvidencesScalarFieldEnum[]
+    distinct?: MemosScalarFieldEnum | MemosScalarFieldEnum[]
   }
 
   /**
@@ -3103,19 +3114,19 @@ export namespace Prisma {
 
 
   /**
-   * Model Evidences
+   * Model Memos
    */
 
-  export type AggregateEvidences = {
-    _count: EvidencesCountAggregateOutputType | null
-    _min: EvidencesMinAggregateOutputType | null
-    _max: EvidencesMaxAggregateOutputType | null
+  export type AggregateMemos = {
+    _count: MemosCountAggregateOutputType | null
+    _min: MemosMinAggregateOutputType | null
+    _max: MemosMaxAggregateOutputType | null
   }
 
-  export type EvidencesMinAggregateOutputType = {
+  export type MemosMinAggregateOutputType = {
     id: string | null
     code: string | null
-    type: string | null
+    filePath: string | null
     description: string | null
     dateCollected: Date | null
     caseId: string | null
@@ -3123,10 +3134,10 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type EvidencesMaxAggregateOutputType = {
+  export type MemosMaxAggregateOutputType = {
     id: string | null
     code: string | null
-    type: string | null
+    filePath: string | null
     description: string | null
     dateCollected: Date | null
     caseId: string | null
@@ -3134,10 +3145,10 @@ export namespace Prisma {
     updatedAt: Date | null
   }
 
-  export type EvidencesCountAggregateOutputType = {
+  export type MemosCountAggregateOutputType = {
     id: number
     code: number
-    type: number
+    filePath: number
     description: number
     dateCollected: number
     caseId: number
@@ -3147,10 +3158,10 @@ export namespace Prisma {
   }
 
 
-  export type EvidencesMinAggregateInputType = {
+  export type MemosMinAggregateInputType = {
     id?: true
     code?: true
-    type?: true
+    filePath?: true
     description?: true
     dateCollected?: true
     caseId?: true
@@ -3158,10 +3169,10 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type EvidencesMaxAggregateInputType = {
+  export type MemosMaxAggregateInputType = {
     id?: true
     code?: true
-    type?: true
+    filePath?: true
     description?: true
     dateCollected?: true
     caseId?: true
@@ -3169,10 +3180,10 @@ export namespace Prisma {
     updatedAt?: true
   }
 
-  export type EvidencesCountAggregateInputType = {
+  export type MemosCountAggregateInputType = {
     id?: true
     code?: true
-    type?: true
+    filePath?: true
     description?: true
     dateCollected?: true
     caseId?: true
@@ -3181,124 +3192,124 @@ export namespace Prisma {
     _all?: true
   }
 
-  export type EvidencesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MemosAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Evidences to aggregate.
+     * Filter which Memos to aggregate.
      */
-    where?: EvidencesWhereInput
+    where?: MemosWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Evidences to fetch.
+     * Determine the order of Memos to fetch.
      */
-    orderBy?: EvidencesOrderByWithRelationInput | EvidencesOrderByWithRelationInput[]
+    orderBy?: MemosOrderByWithRelationInput | MemosOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
      * Sets the start position
      */
-    cursor?: EvidencesWhereUniqueInput
+    cursor?: MemosWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Evidences from the position of the cursor.
+     * Take `±n` Memos from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Evidences.
+     * Skip the first `n` Memos.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Count returned Evidences
+     * Count returned Memos
     **/
-    _count?: true | EvidencesCountAggregateInputType
+    _count?: true | MemosCountAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the minimum value
     **/
-    _min?: EvidencesMinAggregateInputType
+    _min?: MemosMinAggregateInputType
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
      * Select which fields to find the maximum value
     **/
-    _max?: EvidencesMaxAggregateInputType
+    _max?: MemosMaxAggregateInputType
   }
 
-  export type GetEvidencesAggregateType<T extends EvidencesAggregateArgs> = {
-        [P in keyof T & keyof AggregateEvidences]: P extends '_count' | 'count'
+  export type GetMemosAggregateType<T extends MemosAggregateArgs> = {
+        [P in keyof T & keyof AggregateMemos]: P extends '_count' | 'count'
       ? T[P] extends true
         ? number
-        : GetScalarType<T[P], AggregateEvidences[P]>
-      : GetScalarType<T[P], AggregateEvidences[P]>
+        : GetScalarType<T[P], AggregateMemos[P]>
+      : GetScalarType<T[P], AggregateMemos[P]>
   }
 
 
 
 
-  export type EvidencesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: EvidencesWhereInput
-    orderBy?: EvidencesOrderByWithAggregationInput | EvidencesOrderByWithAggregationInput[]
-    by: EvidencesScalarFieldEnum[] | EvidencesScalarFieldEnum
-    having?: EvidencesScalarWhereWithAggregatesInput
+  export type MemosGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: MemosWhereInput
+    orderBy?: MemosOrderByWithAggregationInput | MemosOrderByWithAggregationInput[]
+    by: MemosScalarFieldEnum[] | MemosScalarFieldEnum
+    having?: MemosScalarWhereWithAggregatesInput
     take?: number
     skip?: number
-    _count?: EvidencesCountAggregateInputType | true
-    _min?: EvidencesMinAggregateInputType
-    _max?: EvidencesMaxAggregateInputType
+    _count?: MemosCountAggregateInputType | true
+    _min?: MemosMinAggregateInputType
+    _max?: MemosMaxAggregateInputType
   }
 
-  export type EvidencesGroupByOutputType = {
+  export type MemosGroupByOutputType = {
     id: string
     code: string
-    type: string | null
+    filePath: string | null
     description: string | null
     dateCollected: Date
     caseId: string
     createdAt: Date
     updatedAt: Date | null
-    _count: EvidencesCountAggregateOutputType | null
-    _min: EvidencesMinAggregateOutputType | null
-    _max: EvidencesMaxAggregateOutputType | null
+    _count: MemosCountAggregateOutputType | null
+    _min: MemosMinAggregateOutputType | null
+    _max: MemosMaxAggregateOutputType | null
   }
 
-  type GetEvidencesGroupByPayload<T extends EvidencesGroupByArgs> = Prisma.PrismaPromise<
+  type GetMemosGroupByPayload<T extends MemosGroupByArgs> = Prisma.PrismaPromise<
     Array<
-      PickEnumerable<EvidencesGroupByOutputType, T['by']> &
+      PickEnumerable<MemosGroupByOutputType, T['by']> &
         {
-          [P in ((keyof T) & (keyof EvidencesGroupByOutputType))]: P extends '_count'
+          [P in ((keyof T) & (keyof MemosGroupByOutputType))]: P extends '_count'
             ? T[P] extends boolean
               ? number
-              : GetScalarType<T[P], EvidencesGroupByOutputType[P]>
-            : GetScalarType<T[P], EvidencesGroupByOutputType[P]>
+              : GetScalarType<T[P], MemosGroupByOutputType[P]>
+            : GetScalarType<T[P], MemosGroupByOutputType[P]>
         }
       >
     >
 
 
-  export type EvidencesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+  export type MemosSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     code?: boolean
-    type?: boolean
+    filePath?: boolean
     description?: boolean
     dateCollected?: boolean
     caseId?: boolean
     createdAt?: boolean
     updatedAt?: boolean
     Case?: boolean | CaseDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["evidences"]>
+  }, ExtArgs["result"]["memos"]>
 
 
 
-  export type EvidencesSelectScalar = {
+  export type MemosSelectScalar = {
     id?: boolean
     code?: boolean
-    type?: boolean
+    filePath?: boolean
     description?: boolean
     dateCollected?: boolean
     caseId?: boolean
@@ -3306,162 +3317,162 @@ export namespace Prisma {
     updatedAt?: boolean
   }
 
-  export type EvidencesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "code" | "type" | "description" | "dateCollected" | "caseId" | "createdAt" | "updatedAt", ExtArgs["result"]["evidences"]>
-  export type EvidencesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MemosOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "code" | "filePath" | "description" | "dateCollected" | "caseId" | "createdAt" | "updatedAt", ExtArgs["result"]["memos"]>
+  export type MemosInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     Case?: boolean | CaseDefaultArgs<ExtArgs>
   }
 
-  export type $EvidencesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Evidences"
+  export type $MemosPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "Memos"
     objects: {
       Case: Prisma.$CasePayload<ExtArgs>
     }
     scalars: $Extensions.GetPayloadResult<{
       id: string
       code: string
-      type: string | null
+      filePath: string | null
       description: string | null
       dateCollected: Date
       caseId: string
       createdAt: Date
       updatedAt: Date | null
-    }, ExtArgs["result"]["evidences"]>
+    }, ExtArgs["result"]["memos"]>
     composites: {}
   }
 
-  type EvidencesGetPayload<S extends boolean | null | undefined | EvidencesDefaultArgs> = $Result.GetResult<Prisma.$EvidencesPayload, S>
+  type MemosGetPayload<S extends boolean | null | undefined | MemosDefaultArgs> = $Result.GetResult<Prisma.$MemosPayload, S>
 
-  type EvidencesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<EvidencesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: EvidencesCountAggregateInputType | true
+  type MemosCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<MemosFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: MemosCountAggregateInputType | true
     }
 
-  export interface EvidencesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Evidences'], meta: { name: 'Evidences' } }
+  export interface MemosDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Memos'], meta: { name: 'Memos' } }
     /**
-     * Find zero or one Evidences that matches the filter.
-     * @param {EvidencesFindUniqueArgs} args - Arguments to find a Evidences
+     * Find zero or one Memos that matches the filter.
+     * @param {MemosFindUniqueArgs} args - Arguments to find a Memos
      * @example
-     * // Get one Evidences
-     * const evidences = await prisma.evidences.findUnique({
+     * // Get one Memos
+     * const memos = await prisma.memos.findUnique({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUnique<T extends EvidencesFindUniqueArgs>(args: SelectSubset<T, EvidencesFindUniqueArgs<ExtArgs>>): Prisma__EvidencesClient<$Result.GetResult<Prisma.$EvidencesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findUnique<T extends MemosFindUniqueArgs>(args: SelectSubset<T, MemosFindUniqueArgs<ExtArgs>>): Prisma__MemosClient<$Result.GetResult<Prisma.$MemosPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find one Evidences that matches the filter or throw an error with `error.code='P2025'`
+     * Find one Memos that matches the filter or throw an error with `error.code='P2025'`
      * if no matches were found.
-     * @param {EvidencesFindUniqueOrThrowArgs} args - Arguments to find a Evidences
+     * @param {MemosFindUniqueOrThrowArgs} args - Arguments to find a Memos
      * @example
-     * // Get one Evidences
-     * const evidences = await prisma.evidences.findUniqueOrThrow({
+     * // Get one Memos
+     * const memos = await prisma.memos.findUniqueOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findUniqueOrThrow<T extends EvidencesFindUniqueOrThrowArgs>(args: SelectSubset<T, EvidencesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__EvidencesClient<$Result.GetResult<Prisma.$EvidencesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findUniqueOrThrow<T extends MemosFindUniqueOrThrowArgs>(args: SelectSubset<T, MemosFindUniqueOrThrowArgs<ExtArgs>>): Prisma__MemosClient<$Result.GetResult<Prisma.$MemosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Evidences that matches the filter.
+     * Find the first Memos that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {EvidencesFindFirstArgs} args - Arguments to find a Evidences
+     * @param {MemosFindFirstArgs} args - Arguments to find a Memos
      * @example
-     * // Get one Evidences
-     * const evidences = await prisma.evidences.findFirst({
+     * // Get one Memos
+     * const memos = await prisma.memos.findFirst({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirst<T extends EvidencesFindFirstArgs>(args?: SelectSubset<T, EvidencesFindFirstArgs<ExtArgs>>): Prisma__EvidencesClient<$Result.GetResult<Prisma.$EvidencesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    findFirst<T extends MemosFindFirstArgs>(args?: SelectSubset<T, MemosFindFirstArgs<ExtArgs>>): Prisma__MemosClient<$Result.GetResult<Prisma.$MemosPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find the first Evidences that matches the filter or
+     * Find the first Memos that matches the filter or
      * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {EvidencesFindFirstOrThrowArgs} args - Arguments to find a Evidences
+     * @param {MemosFindFirstOrThrowArgs} args - Arguments to find a Memos
      * @example
-     * // Get one Evidences
-     * const evidences = await prisma.evidences.findFirstOrThrow({
+     * // Get one Memos
+     * const memos = await prisma.memos.findFirstOrThrow({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      */
-    findFirstOrThrow<T extends EvidencesFindFirstOrThrowArgs>(args?: SelectSubset<T, EvidencesFindFirstOrThrowArgs<ExtArgs>>): Prisma__EvidencesClient<$Result.GetResult<Prisma.$EvidencesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    findFirstOrThrow<T extends MemosFindFirstOrThrowArgs>(args?: SelectSubset<T, MemosFindFirstOrThrowArgs<ExtArgs>>): Prisma__MemosClient<$Result.GetResult<Prisma.$MemosPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Find zero or more Evidences that matches the filter.
+     * Find zero or more Memos that matches the filter.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {EvidencesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @param {MemosFindManyArgs} args - Arguments to filter and select certain fields only.
      * @example
-     * // Get all Evidences
-     * const evidences = await prisma.evidences.findMany()
+     * // Get all Memos
+     * const memos = await prisma.memos.findMany()
      * 
-     * // Get first 10 Evidences
-     * const evidences = await prisma.evidences.findMany({ take: 10 })
+     * // Get first 10 Memos
+     * const memos = await prisma.memos.findMany({ take: 10 })
      * 
      * // Only select the `id`
-     * const evidencesWithIdOnly = await prisma.evidences.findMany({ select: { id: true } })
+     * const memosWithIdOnly = await prisma.memos.findMany({ select: { id: true } })
      * 
      */
-    findMany<T extends EvidencesFindManyArgs>(args?: SelectSubset<T, EvidencesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$EvidencesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+    findMany<T extends MemosFindManyArgs>(args?: SelectSubset<T, MemosFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$MemosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
 
     /**
-     * Create a Evidences.
-     * @param {EvidencesCreateArgs} args - Arguments to create a Evidences.
+     * Create a Memos.
+     * @param {MemosCreateArgs} args - Arguments to create a Memos.
      * @example
-     * // Create one Evidences
-     * const Evidences = await prisma.evidences.create({
+     * // Create one Memos
+     * const Memos = await prisma.memos.create({
      *   data: {
-     *     // ... data to create a Evidences
+     *     // ... data to create a Memos
      *   }
      * })
      * 
      */
-    create<T extends EvidencesCreateArgs>(args: SelectSubset<T, EvidencesCreateArgs<ExtArgs>>): Prisma__EvidencesClient<$Result.GetResult<Prisma.$EvidencesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    create<T extends MemosCreateArgs>(args: SelectSubset<T, MemosCreateArgs<ExtArgs>>): Prisma__MemosClient<$Result.GetResult<Prisma.$MemosPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Create many Evidences.
-     * @param {EvidencesCreateManyArgs} args - Arguments to create many Evidences.
+     * Create many Memos.
+     * @param {MemosCreateManyArgs} args - Arguments to create many Memos.
      * @example
-     * // Create many Evidences
-     * const evidences = await prisma.evidences.createMany({
+     * // Create many Memos
+     * const memos = await prisma.memos.createMany({
      *   data: [
      *     // ... provide data here
      *   ]
      * })
      *     
      */
-    createMany<T extends EvidencesCreateManyArgs>(args?: SelectSubset<T, EvidencesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    createMany<T extends MemosCreateManyArgs>(args?: SelectSubset<T, MemosCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Delete a Evidences.
-     * @param {EvidencesDeleteArgs} args - Arguments to delete one Evidences.
+     * Delete a Memos.
+     * @param {MemosDeleteArgs} args - Arguments to delete one Memos.
      * @example
-     * // Delete one Evidences
-     * const Evidences = await prisma.evidences.delete({
+     * // Delete one Memos
+     * const Memos = await prisma.memos.delete({
      *   where: {
-     *     // ... filter to delete one Evidences
+     *     // ... filter to delete one Memos
      *   }
      * })
      * 
      */
-    delete<T extends EvidencesDeleteArgs>(args: SelectSubset<T, EvidencesDeleteArgs<ExtArgs>>): Prisma__EvidencesClient<$Result.GetResult<Prisma.$EvidencesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    delete<T extends MemosDeleteArgs>(args: SelectSubset<T, MemosDeleteArgs<ExtArgs>>): Prisma__MemosClient<$Result.GetResult<Prisma.$MemosPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Update one Evidences.
-     * @param {EvidencesUpdateArgs} args - Arguments to update one Evidences.
+     * Update one Memos.
+     * @param {MemosUpdateArgs} args - Arguments to update one Memos.
      * @example
-     * // Update one Evidences
-     * const evidences = await prisma.evidences.update({
+     * // Update one Memos
+     * const memos = await prisma.memos.update({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3471,30 +3482,30 @@ export namespace Prisma {
      * })
      * 
      */
-    update<T extends EvidencesUpdateArgs>(args: SelectSubset<T, EvidencesUpdateArgs<ExtArgs>>): Prisma__EvidencesClient<$Result.GetResult<Prisma.$EvidencesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    update<T extends MemosUpdateArgs>(args: SelectSubset<T, MemosUpdateArgs<ExtArgs>>): Prisma__MemosClient<$Result.GetResult<Prisma.$MemosPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
     /**
-     * Delete zero or more Evidences.
-     * @param {EvidencesDeleteManyArgs} args - Arguments to filter Evidences to delete.
+     * Delete zero or more Memos.
+     * @param {MemosDeleteManyArgs} args - Arguments to filter Memos to delete.
      * @example
-     * // Delete a few Evidences
-     * const { count } = await prisma.evidences.deleteMany({
+     * // Delete a few Memos
+     * const { count } = await prisma.memos.deleteMany({
      *   where: {
      *     // ... provide filter here
      *   }
      * })
      * 
      */
-    deleteMany<T extends EvidencesDeleteManyArgs>(args?: SelectSubset<T, EvidencesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    deleteMany<T extends MemosDeleteManyArgs>(args?: SelectSubset<T, MemosDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Update zero or more Evidences.
+     * Update zero or more Memos.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {EvidencesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @param {MemosUpdateManyArgs} args - Arguments to update one or more rows.
      * @example
-     * // Update many Evidences
-     * const evidences = await prisma.evidences.updateMany({
+     * // Update many Memos
+     * const memos = await prisma.memos.updateMany({
      *   where: {
      *     // ... provide filter here
      *   },
@@ -3504,56 +3515,56 @@ export namespace Prisma {
      * })
      * 
      */
-    updateMany<T extends EvidencesUpdateManyArgs>(args: SelectSubset<T, EvidencesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+    updateMany<T extends MemosUpdateManyArgs>(args: SelectSubset<T, MemosUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
 
     /**
-     * Create or update one Evidences.
-     * @param {EvidencesUpsertArgs} args - Arguments to update or create a Evidences.
+     * Create or update one Memos.
+     * @param {MemosUpsertArgs} args - Arguments to update or create a Memos.
      * @example
-     * // Update or create a Evidences
-     * const evidences = await prisma.evidences.upsert({
+     * // Update or create a Memos
+     * const memos = await prisma.memos.upsert({
      *   create: {
-     *     // ... data to create a Evidences
+     *     // ... data to create a Memos
      *   },
      *   update: {
      *     // ... in case it already exists, update
      *   },
      *   where: {
-     *     // ... the filter for the Evidences we want to update
+     *     // ... the filter for the Memos we want to update
      *   }
      * })
      */
-    upsert<T extends EvidencesUpsertArgs>(args: SelectSubset<T, EvidencesUpsertArgs<ExtArgs>>): Prisma__EvidencesClient<$Result.GetResult<Prisma.$EvidencesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+    upsert<T extends MemosUpsertArgs>(args: SelectSubset<T, MemosUpsertArgs<ExtArgs>>): Prisma__MemosClient<$Result.GetResult<Prisma.$MemosPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
 
 
     /**
-     * Count the number of Evidences.
+     * Count the number of Memos.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {EvidencesCountArgs} args - Arguments to filter Evidences to count.
+     * @param {MemosCountArgs} args - Arguments to filter Memos to count.
      * @example
-     * // Count the number of Evidences
-     * const count = await prisma.evidences.count({
+     * // Count the number of Memos
+     * const count = await prisma.memos.count({
      *   where: {
-     *     // ... the filter for the Evidences we want to count
+     *     // ... the filter for the Memos we want to count
      *   }
      * })
     **/
-    count<T extends EvidencesCountArgs>(
-      args?: Subset<T, EvidencesCountArgs>,
+    count<T extends MemosCountArgs>(
+      args?: Subset<T, MemosCountArgs>,
     ): Prisma.PrismaPromise<
       T extends $Utils.Record<'select', any>
         ? T['select'] extends true
           ? number
-          : GetScalarType<T['select'], EvidencesCountAggregateOutputType>
+          : GetScalarType<T['select'], MemosCountAggregateOutputType>
         : number
     >
 
     /**
-     * Allows you to perform aggregations operations on a Evidences.
+     * Allows you to perform aggregations operations on a Memos.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {EvidencesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @param {MemosAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
      * @example
      * // Ordered by age ascending
      * // Where email contains prisma.io
@@ -3573,13 +3584,13 @@ export namespace Prisma {
      *   take: 10,
      * })
     **/
-    aggregate<T extends EvidencesAggregateArgs>(args: Subset<T, EvidencesAggregateArgs>): Prisma.PrismaPromise<GetEvidencesAggregateType<T>>
+    aggregate<T extends MemosAggregateArgs>(args: Subset<T, MemosAggregateArgs>): Prisma.PrismaPromise<GetMemosAggregateType<T>>
 
     /**
-     * Group by Evidences.
+     * Group by Memos.
      * Note, that providing `undefined` is treated as the value not being there.
      * Read more here: https://pris.ly/d/null-undefined
-     * @param {EvidencesGroupByArgs} args - Group by arguments.
+     * @param {MemosGroupByArgs} args - Group by arguments.
      * @example
      * // Group by city, order by createdAt, get count
      * const result = await prisma.user.groupBy({
@@ -3594,14 +3605,14 @@ export namespace Prisma {
      * 
     **/
     groupBy<
-      T extends EvidencesGroupByArgs,
+      T extends MemosGroupByArgs,
       HasSelectOrTake extends Or<
         Extends<'skip', Keys<T>>,
         Extends<'take', Keys<T>>
       >,
       OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: EvidencesGroupByArgs['orderBy'] }
-        : { orderBy?: EvidencesGroupByArgs['orderBy'] },
+        ? { orderBy: MemosGroupByArgs['orderBy'] }
+        : { orderBy?: MemosGroupByArgs['orderBy'] },
       OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
       ByFields extends MaybeTupleToUnion<T['by']>,
       ByValid extends Has<ByFields, OrderFields>,
@@ -3650,20 +3661,20 @@ export namespace Prisma {
             ? never
             : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
         }[OrderFields]
-    >(args: SubsetIntersection<T, EvidencesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEvidencesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+    >(args: SubsetIntersection<T, MemosGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMemosGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
   /**
-   * Fields of the Evidences model
+   * Fields of the Memos model
    */
-  readonly fields: EvidencesFieldRefs;
+  readonly fields: MemosFieldRefs;
   }
 
   /**
-   * The delegate class that acts as a "Promise-like" for Evidences.
+   * The delegate class that acts as a "Promise-like" for Memos.
    * Why is this prefixed with `Prisma__`?
    * Because we want to prevent naming conflicts as mentioned in
    * https://github.com/prisma/prisma-client-js/issues/707
    */
-  export interface Prisma__EvidencesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+  export interface Prisma__MemosClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     Case<T extends CaseDefaultArgs<ExtArgs> = {}>(args?: Subset<T, CaseDefaultArgs<ExtArgs>>): Prisma__CaseClient<$Result.GetResult<Prisma.$CasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
@@ -3692,375 +3703,375 @@ export namespace Prisma {
 
 
   /**
-   * Fields of the Evidences model
+   * Fields of the Memos model
    */
-  interface EvidencesFieldRefs {
-    readonly id: FieldRef<"Evidences", 'String'>
-    readonly code: FieldRef<"Evidences", 'String'>
-    readonly type: FieldRef<"Evidences", 'String'>
-    readonly description: FieldRef<"Evidences", 'String'>
-    readonly dateCollected: FieldRef<"Evidences", 'DateTime'>
-    readonly caseId: FieldRef<"Evidences", 'String'>
-    readonly createdAt: FieldRef<"Evidences", 'DateTime'>
-    readonly updatedAt: FieldRef<"Evidences", 'DateTime'>
+  interface MemosFieldRefs {
+    readonly id: FieldRef<"Memos", 'String'>
+    readonly code: FieldRef<"Memos", 'String'>
+    readonly filePath: FieldRef<"Memos", 'String'>
+    readonly description: FieldRef<"Memos", 'String'>
+    readonly dateCollected: FieldRef<"Memos", 'DateTime'>
+    readonly caseId: FieldRef<"Memos", 'String'>
+    readonly createdAt: FieldRef<"Memos", 'DateTime'>
+    readonly updatedAt: FieldRef<"Memos", 'DateTime'>
   }
     
 
   // Custom InputTypes
   /**
-   * Evidences findUnique
+   * Memos findUnique
    */
-  export type EvidencesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MemosFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Evidences
+     * Select specific fields to fetch from the Memos
      */
-    select?: EvidencesSelect<ExtArgs> | null
+    select?: MemosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Evidences
+     * Omit specific fields from the Memos
      */
-    omit?: EvidencesOmit<ExtArgs> | null
+    omit?: MemosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EvidencesInclude<ExtArgs> | null
+    include?: MemosInclude<ExtArgs> | null
     /**
-     * Filter, which Evidences to fetch.
+     * Filter, which Memos to fetch.
      */
-    where: EvidencesWhereUniqueInput
+    where: MemosWhereUniqueInput
   }
 
   /**
-   * Evidences findUniqueOrThrow
+   * Memos findUniqueOrThrow
    */
-  export type EvidencesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MemosFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Evidences
+     * Select specific fields to fetch from the Memos
      */
-    select?: EvidencesSelect<ExtArgs> | null
+    select?: MemosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Evidences
+     * Omit specific fields from the Memos
      */
-    omit?: EvidencesOmit<ExtArgs> | null
+    omit?: MemosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EvidencesInclude<ExtArgs> | null
+    include?: MemosInclude<ExtArgs> | null
     /**
-     * Filter, which Evidences to fetch.
+     * Filter, which Memos to fetch.
      */
-    where: EvidencesWhereUniqueInput
+    where: MemosWhereUniqueInput
   }
 
   /**
-   * Evidences findFirst
+   * Memos findFirst
    */
-  export type EvidencesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MemosFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Evidences
+     * Select specific fields to fetch from the Memos
      */
-    select?: EvidencesSelect<ExtArgs> | null
+    select?: MemosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Evidences
+     * Omit specific fields from the Memos
      */
-    omit?: EvidencesOmit<ExtArgs> | null
+    omit?: MemosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EvidencesInclude<ExtArgs> | null
+    include?: MemosInclude<ExtArgs> | null
     /**
-     * Filter, which Evidences to fetch.
+     * Filter, which Memos to fetch.
      */
-    where?: EvidencesWhereInput
+    where?: MemosWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Evidences to fetch.
+     * Determine the order of Memos to fetch.
      */
-    orderBy?: EvidencesOrderByWithRelationInput | EvidencesOrderByWithRelationInput[]
+    orderBy?: MemosOrderByWithRelationInput | MemosOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Evidences.
+     * Sets the position for searching for Memos.
      */
-    cursor?: EvidencesWhereUniqueInput
+    cursor?: MemosWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Evidences from the position of the cursor.
+     * Take `±n` Memos from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Evidences.
+     * Skip the first `n` Memos.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Evidences.
+     * Filter by unique combinations of Memos.
      */
-    distinct?: EvidencesScalarFieldEnum | EvidencesScalarFieldEnum[]
+    distinct?: MemosScalarFieldEnum | MemosScalarFieldEnum[]
   }
 
   /**
-   * Evidences findFirstOrThrow
+   * Memos findFirstOrThrow
    */
-  export type EvidencesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MemosFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Evidences
+     * Select specific fields to fetch from the Memos
      */
-    select?: EvidencesSelect<ExtArgs> | null
+    select?: MemosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Evidences
+     * Omit specific fields from the Memos
      */
-    omit?: EvidencesOmit<ExtArgs> | null
+    omit?: MemosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EvidencesInclude<ExtArgs> | null
+    include?: MemosInclude<ExtArgs> | null
     /**
-     * Filter, which Evidences to fetch.
+     * Filter, which Memos to fetch.
      */
-    where?: EvidencesWhereInput
+    where?: MemosWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Evidences to fetch.
+     * Determine the order of Memos to fetch.
      */
-    orderBy?: EvidencesOrderByWithRelationInput | EvidencesOrderByWithRelationInput[]
+    orderBy?: MemosOrderByWithRelationInput | MemosOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for searching for Evidences.
+     * Sets the position for searching for Memos.
      */
-    cursor?: EvidencesWhereUniqueInput
+    cursor?: MemosWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Evidences from the position of the cursor.
+     * Take `±n` Memos from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Evidences.
+     * Skip the first `n` Memos.
      */
     skip?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
      * 
-     * Filter by unique combinations of Evidences.
+     * Filter by unique combinations of Memos.
      */
-    distinct?: EvidencesScalarFieldEnum | EvidencesScalarFieldEnum[]
+    distinct?: MemosScalarFieldEnum | MemosScalarFieldEnum[]
   }
 
   /**
-   * Evidences findMany
+   * Memos findMany
    */
-  export type EvidencesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MemosFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Evidences
+     * Select specific fields to fetch from the Memos
      */
-    select?: EvidencesSelect<ExtArgs> | null
+    select?: MemosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Evidences
+     * Omit specific fields from the Memos
      */
-    omit?: EvidencesOmit<ExtArgs> | null
+    omit?: MemosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EvidencesInclude<ExtArgs> | null
+    include?: MemosInclude<ExtArgs> | null
     /**
-     * Filter, which Evidences to fetch.
+     * Filter, which Memos to fetch.
      */
-    where?: EvidencesWhereInput
+    where?: MemosWhereInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
      * 
-     * Determine the order of Evidences to fetch.
+     * Determine the order of Memos to fetch.
      */
-    orderBy?: EvidencesOrderByWithRelationInput | EvidencesOrderByWithRelationInput[]
+    orderBy?: MemosOrderByWithRelationInput | MemosOrderByWithRelationInput[]
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
      * 
-     * Sets the position for listing Evidences.
+     * Sets the position for listing Memos.
      */
-    cursor?: EvidencesWhereUniqueInput
+    cursor?: MemosWhereUniqueInput
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Take `±n` Evidences from the position of the cursor.
+     * Take `±n` Memos from the position of the cursor.
      */
     take?: number
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
      * 
-     * Skip the first `n` Evidences.
+     * Skip the first `n` Memos.
      */
     skip?: number
-    distinct?: EvidencesScalarFieldEnum | EvidencesScalarFieldEnum[]
+    distinct?: MemosScalarFieldEnum | MemosScalarFieldEnum[]
   }
 
   /**
-   * Evidences create
+   * Memos create
    */
-  export type EvidencesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MemosCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Evidences
+     * Select specific fields to fetch from the Memos
      */
-    select?: EvidencesSelect<ExtArgs> | null
+    select?: MemosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Evidences
+     * Omit specific fields from the Memos
      */
-    omit?: EvidencesOmit<ExtArgs> | null
+    omit?: MemosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EvidencesInclude<ExtArgs> | null
+    include?: MemosInclude<ExtArgs> | null
     /**
-     * The data needed to create a Evidences.
+     * The data needed to create a Memos.
      */
-    data: XOR<EvidencesCreateInput, EvidencesUncheckedCreateInput>
+    data: XOR<MemosCreateInput, MemosUncheckedCreateInput>
   }
 
   /**
-   * Evidences createMany
+   * Memos createMany
    */
-  export type EvidencesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MemosCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to create many Evidences.
+     * The data used to create many Memos.
      */
-    data: EvidencesCreateManyInput | EvidencesCreateManyInput[]
+    data: MemosCreateManyInput | MemosCreateManyInput[]
     skipDuplicates?: boolean
   }
 
   /**
-   * Evidences update
+   * Memos update
    */
-  export type EvidencesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MemosUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Evidences
+     * Select specific fields to fetch from the Memos
      */
-    select?: EvidencesSelect<ExtArgs> | null
+    select?: MemosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Evidences
+     * Omit specific fields from the Memos
      */
-    omit?: EvidencesOmit<ExtArgs> | null
+    omit?: MemosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EvidencesInclude<ExtArgs> | null
+    include?: MemosInclude<ExtArgs> | null
     /**
-     * The data needed to update a Evidences.
+     * The data needed to update a Memos.
      */
-    data: XOR<EvidencesUpdateInput, EvidencesUncheckedUpdateInput>
+    data: XOR<MemosUpdateInput, MemosUncheckedUpdateInput>
     /**
-     * Choose, which Evidences to update.
+     * Choose, which Memos to update.
      */
-    where: EvidencesWhereUniqueInput
+    where: MemosWhereUniqueInput
   }
 
   /**
-   * Evidences updateMany
+   * Memos updateMany
    */
-  export type EvidencesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MemosUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * The data used to update Evidences.
+     * The data used to update Memos.
      */
-    data: XOR<EvidencesUpdateManyMutationInput, EvidencesUncheckedUpdateManyInput>
+    data: XOR<MemosUpdateManyMutationInput, MemosUncheckedUpdateManyInput>
     /**
-     * Filter which Evidences to update
+     * Filter which Memos to update
      */
-    where?: EvidencesWhereInput
+    where?: MemosWhereInput
     /**
-     * Limit how many Evidences to update.
+     * Limit how many Memos to update.
      */
     limit?: number
   }
 
   /**
-   * Evidences upsert
+   * Memos upsert
    */
-  export type EvidencesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MemosUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Evidences
+     * Select specific fields to fetch from the Memos
      */
-    select?: EvidencesSelect<ExtArgs> | null
+    select?: MemosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Evidences
+     * Omit specific fields from the Memos
      */
-    omit?: EvidencesOmit<ExtArgs> | null
+    omit?: MemosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EvidencesInclude<ExtArgs> | null
+    include?: MemosInclude<ExtArgs> | null
     /**
-     * The filter to search for the Evidences to update in case it exists.
+     * The filter to search for the Memos to update in case it exists.
      */
-    where: EvidencesWhereUniqueInput
+    where: MemosWhereUniqueInput
     /**
-     * In case the Evidences found by the `where` argument doesn't exist, create a new Evidences with this data.
+     * In case the Memos found by the `where` argument doesn't exist, create a new Memos with this data.
      */
-    create: XOR<EvidencesCreateInput, EvidencesUncheckedCreateInput>
+    create: XOR<MemosCreateInput, MemosUncheckedCreateInput>
     /**
-     * In case the Evidences was found with the provided `where` argument, update it with this data.
+     * In case the Memos was found with the provided `where` argument, update it with this data.
      */
-    update: XOR<EvidencesUpdateInput, EvidencesUncheckedUpdateInput>
+    update: XOR<MemosUpdateInput, MemosUncheckedUpdateInput>
   }
 
   /**
-   * Evidences delete
+   * Memos delete
    */
-  export type EvidencesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MemosDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Evidences
+     * Select specific fields to fetch from the Memos
      */
-    select?: EvidencesSelect<ExtArgs> | null
+    select?: MemosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Evidences
+     * Omit specific fields from the Memos
      */
-    omit?: EvidencesOmit<ExtArgs> | null
+    omit?: MemosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EvidencesInclude<ExtArgs> | null
+    include?: MemosInclude<ExtArgs> | null
     /**
-     * Filter which Evidences to delete.
+     * Filter which Memos to delete.
      */
-    where: EvidencesWhereUniqueInput
+    where: MemosWhereUniqueInput
   }
 
   /**
-   * Evidences deleteMany
+   * Memos deleteMany
    */
-  export type EvidencesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MemosDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which Evidences to delete
+     * Filter which Memos to delete
      */
-    where?: EvidencesWhereInput
+    where?: MemosWhereInput
     /**
-     * Limit how many Evidences to delete.
+     * Limit how many Memos to delete.
      */
     limit?: number
   }
 
   /**
-   * Evidences without action
+   * Memos without action
    */
-  export type EvidencesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+  export type MemosDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Select specific fields to fetch from the Evidences
+     * Select specific fields to fetch from the Memos
      */
-    select?: EvidencesSelect<ExtArgs> | null
+    select?: MemosSelect<ExtArgs> | null
     /**
-     * Omit specific fields from the Evidences
+     * Omit specific fields from the Memos
      */
-    omit?: EvidencesOmit<ExtArgs> | null
+    omit?: MemosOmit<ExtArgs> | null
     /**
      * Choose, which related nodes to fetch as well
      */
-    include?: EvidencesInclude<ExtArgs> | null
+    include?: MemosInclude<ExtArgs> | null
   }
 
 
@@ -11705,6 +11716,7 @@ export namespace Prisma {
     status: 'status',
     priority: 'priority',
     dateOfInstitution: 'dateOfInstitution',
+    orderOfDate: 'orderOfDate',
     nextDate: 'nextDate',
     location: 'location',
     talukaId: 'talukaId',
@@ -11727,10 +11739,10 @@ export namespace Prisma {
   export type CaseScalarFieldEnum = (typeof CaseScalarFieldEnum)[keyof typeof CaseScalarFieldEnum]
 
 
-  export const EvidencesScalarFieldEnum: {
+  export const MemosScalarFieldEnum: {
     id: 'id',
     code: 'code',
-    type: 'type',
+    filePath: 'filePath',
     description: 'description',
     dateCollected: 'dateCollected',
     caseId: 'caseId',
@@ -11738,7 +11750,7 @@ export namespace Prisma {
     updatedAt: 'updatedAt'
   };
 
-  export type EvidencesScalarFieldEnum = (typeof EvidencesScalarFieldEnum)[keyof typeof EvidencesScalarFieldEnum]
+  export type MemosScalarFieldEnum = (typeof MemosScalarFieldEnum)[keyof typeof MemosScalarFieldEnum]
 
 
   export const NotesScalarFieldEnum: {
@@ -11875,15 +11887,15 @@ export namespace Prisma {
   export type CaseOrderByRelevanceFieldEnum = (typeof CaseOrderByRelevanceFieldEnum)[keyof typeof CaseOrderByRelevanceFieldEnum]
 
 
-  export const EvidencesOrderByRelevanceFieldEnum: {
+  export const MemosOrderByRelevanceFieldEnum: {
     id: 'id',
     code: 'code',
-    type: 'type',
+    filePath: 'filePath',
     description: 'description',
     caseId: 'caseId'
   };
 
-  export type EvidencesOrderByRelevanceFieldEnum = (typeof EvidencesOrderByRelevanceFieldEnum)[keyof typeof EvidencesOrderByRelevanceFieldEnum]
+  export type MemosOrderByRelevanceFieldEnum = (typeof MemosOrderByRelevanceFieldEnum)[keyof typeof MemosOrderByRelevanceFieldEnum]
 
 
   export const NotesOrderByRelevanceFieldEnum: {
@@ -12012,6 +12024,7 @@ export namespace Prisma {
     status?: StringNullableFilter<"Case"> | string | null
     priority?: StringNullableFilter<"Case"> | string | null
     dateOfInstitution?: DateTimeNullableFilter<"Case"> | Date | string | null
+    orderOfDate?: DateTimeNullableFilter<"Case"> | Date | string | null
     nextDate?: DateTimeNullableFilter<"Case"> | Date | string | null
     location?: StringNullableFilter<"Case"> | string | null
     talukaId?: StringNullableFilter<"Case"> | string | null
@@ -12033,7 +12046,7 @@ export namespace Prisma {
     deh?: XOR<DehNullableScalarRelationFilter, DehWhereInput> | null
     forwardedToMukhtiarkar?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     reports?: ReportListRelationFilter
-    evidences?: EvidencesListRelationFilter
+    memos?: MemosListRelationFilter
     notes?: NotesListRelationFilter
     userCases?: UserCasesListRelationFilter
   }
@@ -12046,6 +12059,7 @@ export namespace Prisma {
     status?: SortOrderInput | SortOrder
     priority?: SortOrderInput | SortOrder
     dateOfInstitution?: SortOrderInput | SortOrder
+    orderOfDate?: SortOrderInput | SortOrder
     nextDate?: SortOrderInput | SortOrder
     location?: SortOrderInput | SortOrder
     talukaId?: SortOrderInput | SortOrder
@@ -12067,7 +12081,7 @@ export namespace Prisma {
     deh?: DehOrderByWithRelationInput
     forwardedToMukhtiarkar?: UserOrderByWithRelationInput
     reports?: ReportOrderByRelationAggregateInput
-    evidences?: EvidencesOrderByRelationAggregateInput
+    memos?: MemosOrderByRelationAggregateInput
     notes?: NotesOrderByRelationAggregateInput
     userCases?: UserCasesOrderByRelationAggregateInput
     _relevance?: CaseOrderByRelevanceInput
@@ -12084,6 +12098,7 @@ export namespace Prisma {
     status?: StringNullableFilter<"Case"> | string | null
     priority?: StringNullableFilter<"Case"> | string | null
     dateOfInstitution?: DateTimeNullableFilter<"Case"> | Date | string | null
+    orderOfDate?: DateTimeNullableFilter<"Case"> | Date | string | null
     nextDate?: DateTimeNullableFilter<"Case"> | Date | string | null
     location?: StringNullableFilter<"Case"> | string | null
     talukaId?: StringNullableFilter<"Case"> | string | null
@@ -12105,7 +12120,7 @@ export namespace Prisma {
     deh?: XOR<DehNullableScalarRelationFilter, DehWhereInput> | null
     forwardedToMukhtiarkar?: XOR<UserNullableScalarRelationFilter, UserWhereInput> | null
     reports?: ReportListRelationFilter
-    evidences?: EvidencesListRelationFilter
+    memos?: MemosListRelationFilter
     notes?: NotesListRelationFilter
     userCases?: UserCasesListRelationFilter
   }, "id">
@@ -12118,6 +12133,7 @@ export namespace Prisma {
     status?: SortOrderInput | SortOrder
     priority?: SortOrderInput | SortOrder
     dateOfInstitution?: SortOrderInput | SortOrder
+    orderOfDate?: SortOrderInput | SortOrder
     nextDate?: SortOrderInput | SortOrder
     location?: SortOrderInput | SortOrder
     talukaId?: SortOrderInput | SortOrder
@@ -12151,6 +12167,7 @@ export namespace Prisma {
     status?: StringNullableWithAggregatesFilter<"Case"> | string | null
     priority?: StringNullableWithAggregatesFilter<"Case"> | string | null
     dateOfInstitution?: DateTimeNullableWithAggregatesFilter<"Case"> | Date | string | null
+    orderOfDate?: DateTimeNullableWithAggregatesFilter<"Case"> | Date | string | null
     nextDate?: DateTimeNullableWithAggregatesFilter<"Case"> | Date | string | null
     location?: StringNullableWithAggregatesFilter<"Case"> | string | null
     talukaId?: StringNullableWithAggregatesFilter<"Case"> | string | null
@@ -12170,75 +12187,75 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableWithAggregatesFilter<"Case"> | Date | string | null
   }
 
-  export type EvidencesWhereInput = {
-    AND?: EvidencesWhereInput | EvidencesWhereInput[]
-    OR?: EvidencesWhereInput[]
-    NOT?: EvidencesWhereInput | EvidencesWhereInput[]
-    id?: StringFilter<"Evidences"> | string
-    code?: StringFilter<"Evidences"> | string
-    type?: StringNullableFilter<"Evidences"> | string | null
-    description?: StringNullableFilter<"Evidences"> | string | null
-    dateCollected?: DateTimeFilter<"Evidences"> | Date | string
-    caseId?: StringFilter<"Evidences"> | string
-    createdAt?: DateTimeFilter<"Evidences"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"Evidences"> | Date | string | null
+  export type MemosWhereInput = {
+    AND?: MemosWhereInput | MemosWhereInput[]
+    OR?: MemosWhereInput[]
+    NOT?: MemosWhereInput | MemosWhereInput[]
+    id?: StringFilter<"Memos"> | string
+    code?: StringFilter<"Memos"> | string
+    filePath?: StringNullableFilter<"Memos"> | string | null
+    description?: StringNullableFilter<"Memos"> | string | null
+    dateCollected?: DateTimeFilter<"Memos"> | Date | string
+    caseId?: StringFilter<"Memos"> | string
+    createdAt?: DateTimeFilter<"Memos"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Memos"> | Date | string | null
     Case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
   }
 
-  export type EvidencesOrderByWithRelationInput = {
+  export type MemosOrderByWithRelationInput = {
     id?: SortOrder
     code?: SortOrder
-    type?: SortOrderInput | SortOrder
+    filePath?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
     dateCollected?: SortOrder
     caseId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
     Case?: CaseOrderByWithRelationInput
-    _relevance?: EvidencesOrderByRelevanceInput
+    _relevance?: MemosOrderByRelevanceInput
   }
 
-  export type EvidencesWhereUniqueInput = Prisma.AtLeast<{
+  export type MemosWhereUniqueInput = Prisma.AtLeast<{
     id?: string
-    AND?: EvidencesWhereInput | EvidencesWhereInput[]
-    OR?: EvidencesWhereInput[]
-    NOT?: EvidencesWhereInput | EvidencesWhereInput[]
-    code?: StringFilter<"Evidences"> | string
-    type?: StringNullableFilter<"Evidences"> | string | null
-    description?: StringNullableFilter<"Evidences"> | string | null
-    dateCollected?: DateTimeFilter<"Evidences"> | Date | string
-    caseId?: StringFilter<"Evidences"> | string
-    createdAt?: DateTimeFilter<"Evidences"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"Evidences"> | Date | string | null
+    AND?: MemosWhereInput | MemosWhereInput[]
+    OR?: MemosWhereInput[]
+    NOT?: MemosWhereInput | MemosWhereInput[]
+    code?: StringFilter<"Memos"> | string
+    filePath?: StringNullableFilter<"Memos"> | string | null
+    description?: StringNullableFilter<"Memos"> | string | null
+    dateCollected?: DateTimeFilter<"Memos"> | Date | string
+    caseId?: StringFilter<"Memos"> | string
+    createdAt?: DateTimeFilter<"Memos"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Memos"> | Date | string | null
     Case?: XOR<CaseScalarRelationFilter, CaseWhereInput>
   }, "id">
 
-  export type EvidencesOrderByWithAggregationInput = {
+  export type MemosOrderByWithAggregationInput = {
     id?: SortOrder
     code?: SortOrder
-    type?: SortOrderInput | SortOrder
+    filePath?: SortOrderInput | SortOrder
     description?: SortOrderInput | SortOrder
     dateCollected?: SortOrder
     caseId?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrderInput | SortOrder
-    _count?: EvidencesCountOrderByAggregateInput
-    _max?: EvidencesMaxOrderByAggregateInput
-    _min?: EvidencesMinOrderByAggregateInput
+    _count?: MemosCountOrderByAggregateInput
+    _max?: MemosMaxOrderByAggregateInput
+    _min?: MemosMinOrderByAggregateInput
   }
 
-  export type EvidencesScalarWhereWithAggregatesInput = {
-    AND?: EvidencesScalarWhereWithAggregatesInput | EvidencesScalarWhereWithAggregatesInput[]
-    OR?: EvidencesScalarWhereWithAggregatesInput[]
-    NOT?: EvidencesScalarWhereWithAggregatesInput | EvidencesScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Evidences"> | string
-    code?: StringWithAggregatesFilter<"Evidences"> | string
-    type?: StringNullableWithAggregatesFilter<"Evidences"> | string | null
-    description?: StringNullableWithAggregatesFilter<"Evidences"> | string | null
-    dateCollected?: DateTimeWithAggregatesFilter<"Evidences"> | Date | string
-    caseId?: StringWithAggregatesFilter<"Evidences"> | string
-    createdAt?: DateTimeWithAggregatesFilter<"Evidences"> | Date | string
-    updatedAt?: DateTimeNullableWithAggregatesFilter<"Evidences"> | Date | string | null
+  export type MemosScalarWhereWithAggregatesInput = {
+    AND?: MemosScalarWhereWithAggregatesInput | MemosScalarWhereWithAggregatesInput[]
+    OR?: MemosScalarWhereWithAggregatesInput[]
+    NOT?: MemosScalarWhereWithAggregatesInput | MemosScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"Memos"> | string
+    code?: StringWithAggregatesFilter<"Memos"> | string
+    filePath?: StringNullableWithAggregatesFilter<"Memos"> | string | null
+    description?: StringNullableWithAggregatesFilter<"Memos"> | string | null
+    dateCollected?: DateTimeWithAggregatesFilter<"Memos"> | Date | string
+    caseId?: StringWithAggregatesFilter<"Memos"> | string
+    createdAt?: DateTimeWithAggregatesFilter<"Memos"> | Date | string
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Memos"> | Date | string | null
   }
 
   export type NotesWhereInput = {
@@ -12750,6 +12767,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     description?: string | null
@@ -12768,7 +12786,7 @@ export namespace Prisma {
     deh?: DehCreateNestedOneWithoutCaseInput
     forwardedToMukhtiarkar?: UserCreateNestedOneWithoutForwardedCasesInput
     reports?: ReportCreateNestedManyWithoutCaseInput
-    evidences?: EvidencesCreateNestedManyWithoutCaseInput
+    memos?: MemosCreateNestedManyWithoutCaseInput
     notes?: NotesCreateNestedManyWithoutCaseInput
     userCases?: UserCasesCreateNestedManyWithoutCaseInput
   }
@@ -12781,6 +12799,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     talukaId?: string | null
@@ -12799,7 +12818,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     reports?: ReportUncheckedCreateNestedManyWithoutCaseInput
-    evidences?: EvidencesUncheckedCreateNestedManyWithoutCaseInput
+    memos?: MemosUncheckedCreateNestedManyWithoutCaseInput
     notes?: NotesUncheckedCreateNestedManyWithoutCaseInput
     userCases?: UserCasesUncheckedCreateNestedManyWithoutCaseInput
   }
@@ -12812,6 +12831,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12830,7 +12850,7 @@ export namespace Prisma {
     deh?: DehUpdateOneWithoutCaseNestedInput
     forwardedToMukhtiarkar?: UserUpdateOneWithoutForwardedCasesNestedInput
     reports?: ReportUpdateManyWithoutCaseNestedInput
-    evidences?: EvidencesUpdateManyWithoutCaseNestedInput
+    memos?: MemosUpdateManyWithoutCaseNestedInput
     notes?: NotesUpdateManyWithoutCaseNestedInput
     userCases?: UserCasesUpdateManyWithoutCaseNestedInput
   }
@@ -12843,6 +12863,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     talukaId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12861,7 +12882,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     reports?: ReportUncheckedUpdateManyWithoutCaseNestedInput
-    evidences?: EvidencesUncheckedUpdateManyWithoutCaseNestedInput
+    memos?: MemosUncheckedUpdateManyWithoutCaseNestedInput
     notes?: NotesUncheckedUpdateManyWithoutCaseNestedInput
     userCases?: UserCasesUncheckedUpdateManyWithoutCaseNestedInput
   }
@@ -12874,6 +12895,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     talukaId?: string | null
@@ -12901,6 +12923,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12925,6 +12948,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     talukaId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12944,21 +12968,21 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type EvidencesCreateInput = {
+  export type MemosCreateInput = {
     id?: string
     code: string
-    type?: string | null
+    filePath?: string | null
     description?: string | null
     dateCollected?: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string | null
-    Case: CaseCreateNestedOneWithoutEvidencesInput
+    Case: CaseCreateNestedOneWithoutMemosInput
   }
 
-  export type EvidencesUncheckedCreateInput = {
+  export type MemosUncheckedCreateInput = {
     id?: string
     code: string
-    type?: string | null
+    filePath?: string | null
     description?: string | null
     dateCollected?: Date | string
     caseId: string
@@ -12966,21 +12990,21 @@ export namespace Prisma {
     updatedAt?: Date | string | null
   }
 
-  export type EvidencesUpdateInput = {
+  export type MemosUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    type?: NullableStringFieldUpdateOperationsInput | string | null
+    filePath?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     dateCollected?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    Case?: CaseUpdateOneRequiredWithoutEvidencesNestedInput
+    Case?: CaseUpdateOneRequiredWithoutMemosNestedInput
   }
 
-  export type EvidencesUncheckedUpdateInput = {
+  export type MemosUncheckedUpdateInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    type?: NullableStringFieldUpdateOperationsInput | string | null
+    filePath?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     dateCollected?: DateTimeFieldUpdateOperationsInput | Date | string
     caseId?: StringFieldUpdateOperationsInput | string
@@ -12988,10 +13012,10 @@ export namespace Prisma {
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type EvidencesCreateManyInput = {
+  export type MemosCreateManyInput = {
     id?: string
     code: string
-    type?: string | null
+    filePath?: string | null
     description?: string | null
     dateCollected?: Date | string
     caseId: string
@@ -12999,20 +13023,20 @@ export namespace Prisma {
     updatedAt?: Date | string | null
   }
 
-  export type EvidencesUpdateManyMutationInput = {
+  export type MemosUpdateManyMutationInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    type?: NullableStringFieldUpdateOperationsInput | string | null
+    filePath?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     dateCollected?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type EvidencesUncheckedUpdateManyInput = {
+  export type MemosUncheckedUpdateManyInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    type?: NullableStringFieldUpdateOperationsInput | string | null
+    filePath?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     dateCollected?: DateTimeFieldUpdateOperationsInput | Date | string
     caseId?: StringFieldUpdateOperationsInput | string
@@ -13620,10 +13644,10 @@ export namespace Prisma {
     none?: ReportWhereInput
   }
 
-  export type EvidencesListRelationFilter = {
-    every?: EvidencesWhereInput
-    some?: EvidencesWhereInput
-    none?: EvidencesWhereInput
+  export type MemosListRelationFilter = {
+    every?: MemosWhereInput
+    some?: MemosWhereInput
+    none?: MemosWhereInput
   }
 
   export type NotesListRelationFilter = {
@@ -13647,7 +13671,7 @@ export namespace Prisma {
     _count?: SortOrder
   }
 
-  export type EvidencesOrderByRelationAggregateInput = {
+  export type MemosOrderByRelationAggregateInput = {
     _count?: SortOrder
   }
 
@@ -13673,6 +13697,7 @@ export namespace Prisma {
     status?: SortOrder
     priority?: SortOrder
     dateOfInstitution?: SortOrder
+    orderOfDate?: SortOrder
     nextDate?: SortOrder
     location?: SortOrder
     talukaId?: SortOrder
@@ -13700,6 +13725,7 @@ export namespace Prisma {
     status?: SortOrder
     priority?: SortOrder
     dateOfInstitution?: SortOrder
+    orderOfDate?: SortOrder
     nextDate?: SortOrder
     location?: SortOrder
     talukaId?: SortOrder
@@ -13727,6 +13753,7 @@ export namespace Prisma {
     status?: SortOrder
     priority?: SortOrder
     dateOfInstitution?: SortOrder
+    orderOfDate?: SortOrder
     nextDate?: SortOrder
     location?: SortOrder
     talukaId?: SortOrder
@@ -13823,16 +13850,16 @@ export namespace Prisma {
     isNot?: CaseWhereInput
   }
 
-  export type EvidencesOrderByRelevanceInput = {
-    fields: EvidencesOrderByRelevanceFieldEnum | EvidencesOrderByRelevanceFieldEnum[]
+  export type MemosOrderByRelevanceInput = {
+    fields: MemosOrderByRelevanceFieldEnum | MemosOrderByRelevanceFieldEnum[]
     sort: SortOrder
     search: string
   }
 
-  export type EvidencesCountOrderByAggregateInput = {
+  export type MemosCountOrderByAggregateInput = {
     id?: SortOrder
     code?: SortOrder
-    type?: SortOrder
+    filePath?: SortOrder
     description?: SortOrder
     dateCollected?: SortOrder
     caseId?: SortOrder
@@ -13840,10 +13867,10 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type EvidencesMaxOrderByAggregateInput = {
+  export type MemosMaxOrderByAggregateInput = {
     id?: SortOrder
     code?: SortOrder
-    type?: SortOrder
+    filePath?: SortOrder
     description?: SortOrder
     dateCollected?: SortOrder
     caseId?: SortOrder
@@ -13851,10 +13878,10 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type EvidencesMinOrderByAggregateInput = {
+  export type MemosMinOrderByAggregateInput = {
     id?: SortOrder
     code?: SortOrder
-    type?: SortOrder
+    filePath?: SortOrder
     description?: SortOrder
     dateCollected?: SortOrder
     caseId?: SortOrder
@@ -14186,11 +14213,11 @@ export namespace Prisma {
     connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
   }
 
-  export type EvidencesCreateNestedManyWithoutCaseInput = {
-    create?: XOR<EvidencesCreateWithoutCaseInput, EvidencesUncheckedCreateWithoutCaseInput> | EvidencesCreateWithoutCaseInput[] | EvidencesUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: EvidencesCreateOrConnectWithoutCaseInput | EvidencesCreateOrConnectWithoutCaseInput[]
-    createMany?: EvidencesCreateManyCaseInputEnvelope
-    connect?: EvidencesWhereUniqueInput | EvidencesWhereUniqueInput[]
+  export type MemosCreateNestedManyWithoutCaseInput = {
+    create?: XOR<MemosCreateWithoutCaseInput, MemosUncheckedCreateWithoutCaseInput> | MemosCreateWithoutCaseInput[] | MemosUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: MemosCreateOrConnectWithoutCaseInput | MemosCreateOrConnectWithoutCaseInput[]
+    createMany?: MemosCreateManyCaseInputEnvelope
+    connect?: MemosWhereUniqueInput | MemosWhereUniqueInput[]
   }
 
   export type NotesCreateNestedManyWithoutCaseInput = {
@@ -14214,11 +14241,11 @@ export namespace Prisma {
     connect?: ReportWhereUniqueInput | ReportWhereUniqueInput[]
   }
 
-  export type EvidencesUncheckedCreateNestedManyWithoutCaseInput = {
-    create?: XOR<EvidencesCreateWithoutCaseInput, EvidencesUncheckedCreateWithoutCaseInput> | EvidencesCreateWithoutCaseInput[] | EvidencesUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: EvidencesCreateOrConnectWithoutCaseInput | EvidencesCreateOrConnectWithoutCaseInput[]
-    createMany?: EvidencesCreateManyCaseInputEnvelope
-    connect?: EvidencesWhereUniqueInput | EvidencesWhereUniqueInput[]
+  export type MemosUncheckedCreateNestedManyWithoutCaseInput = {
+    create?: XOR<MemosCreateWithoutCaseInput, MemosUncheckedCreateWithoutCaseInput> | MemosCreateWithoutCaseInput[] | MemosUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: MemosCreateOrConnectWithoutCaseInput | MemosCreateOrConnectWithoutCaseInput[]
+    createMany?: MemosCreateManyCaseInputEnvelope
+    connect?: MemosWhereUniqueInput | MemosWhereUniqueInput[]
   }
 
   export type NotesUncheckedCreateNestedManyWithoutCaseInput = {
@@ -14299,18 +14326,18 @@ export namespace Prisma {
     deleteMany?: ReportScalarWhereInput | ReportScalarWhereInput[]
   }
 
-  export type EvidencesUpdateManyWithoutCaseNestedInput = {
-    create?: XOR<EvidencesCreateWithoutCaseInput, EvidencesUncheckedCreateWithoutCaseInput> | EvidencesCreateWithoutCaseInput[] | EvidencesUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: EvidencesCreateOrConnectWithoutCaseInput | EvidencesCreateOrConnectWithoutCaseInput[]
-    upsert?: EvidencesUpsertWithWhereUniqueWithoutCaseInput | EvidencesUpsertWithWhereUniqueWithoutCaseInput[]
-    createMany?: EvidencesCreateManyCaseInputEnvelope
-    set?: EvidencesWhereUniqueInput | EvidencesWhereUniqueInput[]
-    disconnect?: EvidencesWhereUniqueInput | EvidencesWhereUniqueInput[]
-    delete?: EvidencesWhereUniqueInput | EvidencesWhereUniqueInput[]
-    connect?: EvidencesWhereUniqueInput | EvidencesWhereUniqueInput[]
-    update?: EvidencesUpdateWithWhereUniqueWithoutCaseInput | EvidencesUpdateWithWhereUniqueWithoutCaseInput[]
-    updateMany?: EvidencesUpdateManyWithWhereWithoutCaseInput | EvidencesUpdateManyWithWhereWithoutCaseInput[]
-    deleteMany?: EvidencesScalarWhereInput | EvidencesScalarWhereInput[]
+  export type MemosUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<MemosCreateWithoutCaseInput, MemosUncheckedCreateWithoutCaseInput> | MemosCreateWithoutCaseInput[] | MemosUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: MemosCreateOrConnectWithoutCaseInput | MemosCreateOrConnectWithoutCaseInput[]
+    upsert?: MemosUpsertWithWhereUniqueWithoutCaseInput | MemosUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: MemosCreateManyCaseInputEnvelope
+    set?: MemosWhereUniqueInput | MemosWhereUniqueInput[]
+    disconnect?: MemosWhereUniqueInput | MemosWhereUniqueInput[]
+    delete?: MemosWhereUniqueInput | MemosWhereUniqueInput[]
+    connect?: MemosWhereUniqueInput | MemosWhereUniqueInput[]
+    update?: MemosUpdateWithWhereUniqueWithoutCaseInput | MemosUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: MemosUpdateManyWithWhereWithoutCaseInput | MemosUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: MemosScalarWhereInput | MemosScalarWhereInput[]
   }
 
   export type NotesUpdateManyWithoutCaseNestedInput = {
@@ -14355,18 +14382,18 @@ export namespace Prisma {
     deleteMany?: ReportScalarWhereInput | ReportScalarWhereInput[]
   }
 
-  export type EvidencesUncheckedUpdateManyWithoutCaseNestedInput = {
-    create?: XOR<EvidencesCreateWithoutCaseInput, EvidencesUncheckedCreateWithoutCaseInput> | EvidencesCreateWithoutCaseInput[] | EvidencesUncheckedCreateWithoutCaseInput[]
-    connectOrCreate?: EvidencesCreateOrConnectWithoutCaseInput | EvidencesCreateOrConnectWithoutCaseInput[]
-    upsert?: EvidencesUpsertWithWhereUniqueWithoutCaseInput | EvidencesUpsertWithWhereUniqueWithoutCaseInput[]
-    createMany?: EvidencesCreateManyCaseInputEnvelope
-    set?: EvidencesWhereUniqueInput | EvidencesWhereUniqueInput[]
-    disconnect?: EvidencesWhereUniqueInput | EvidencesWhereUniqueInput[]
-    delete?: EvidencesWhereUniqueInput | EvidencesWhereUniqueInput[]
-    connect?: EvidencesWhereUniqueInput | EvidencesWhereUniqueInput[]
-    update?: EvidencesUpdateWithWhereUniqueWithoutCaseInput | EvidencesUpdateWithWhereUniqueWithoutCaseInput[]
-    updateMany?: EvidencesUpdateManyWithWhereWithoutCaseInput | EvidencesUpdateManyWithWhereWithoutCaseInput[]
-    deleteMany?: EvidencesScalarWhereInput | EvidencesScalarWhereInput[]
+  export type MemosUncheckedUpdateManyWithoutCaseNestedInput = {
+    create?: XOR<MemosCreateWithoutCaseInput, MemosUncheckedCreateWithoutCaseInput> | MemosCreateWithoutCaseInput[] | MemosUncheckedCreateWithoutCaseInput[]
+    connectOrCreate?: MemosCreateOrConnectWithoutCaseInput | MemosCreateOrConnectWithoutCaseInput[]
+    upsert?: MemosUpsertWithWhereUniqueWithoutCaseInput | MemosUpsertWithWhereUniqueWithoutCaseInput[]
+    createMany?: MemosCreateManyCaseInputEnvelope
+    set?: MemosWhereUniqueInput | MemosWhereUniqueInput[]
+    disconnect?: MemosWhereUniqueInput | MemosWhereUniqueInput[]
+    delete?: MemosWhereUniqueInput | MemosWhereUniqueInput[]
+    connect?: MemosWhereUniqueInput | MemosWhereUniqueInput[]
+    update?: MemosUpdateWithWhereUniqueWithoutCaseInput | MemosUpdateWithWhereUniqueWithoutCaseInput[]
+    updateMany?: MemosUpdateManyWithWhereWithoutCaseInput | MemosUpdateManyWithWhereWithoutCaseInput[]
+    deleteMany?: MemosScalarWhereInput | MemosScalarWhereInput[]
   }
 
   export type NotesUncheckedUpdateManyWithoutCaseNestedInput = {
@@ -14397,18 +14424,18 @@ export namespace Prisma {
     deleteMany?: UserCasesScalarWhereInput | UserCasesScalarWhereInput[]
   }
 
-  export type CaseCreateNestedOneWithoutEvidencesInput = {
-    create?: XOR<CaseCreateWithoutEvidencesInput, CaseUncheckedCreateWithoutEvidencesInput>
-    connectOrCreate?: CaseCreateOrConnectWithoutEvidencesInput
+  export type CaseCreateNestedOneWithoutMemosInput = {
+    create?: XOR<CaseCreateWithoutMemosInput, CaseUncheckedCreateWithoutMemosInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutMemosInput
     connect?: CaseWhereUniqueInput
   }
 
-  export type CaseUpdateOneRequiredWithoutEvidencesNestedInput = {
-    create?: XOR<CaseCreateWithoutEvidencesInput, CaseUncheckedCreateWithoutEvidencesInput>
-    connectOrCreate?: CaseCreateOrConnectWithoutEvidencesInput
-    upsert?: CaseUpsertWithoutEvidencesInput
+  export type CaseUpdateOneRequiredWithoutMemosNestedInput = {
+    create?: XOR<CaseCreateWithoutMemosInput, CaseUncheckedCreateWithoutMemosInput>
+    connectOrCreate?: CaseCreateOrConnectWithoutMemosInput
+    upsert?: CaseUpsertWithoutMemosInput
     connect?: CaseWhereUniqueInput
-    update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutEvidencesInput, CaseUpdateWithoutEvidencesInput>, CaseUncheckedUpdateWithoutEvidencesInput>
+    update?: XOR<XOR<CaseUpdateToOneWithWhereWithoutMemosInput, CaseUpdateWithoutMemosInput>, CaseUncheckedUpdateWithoutMemosInput>
   }
 
   export type CaseCreateNestedOneWithoutNotesInput = {
@@ -15003,33 +15030,33 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
-  export type EvidencesCreateWithoutCaseInput = {
+  export type MemosCreateWithoutCaseInput = {
     id?: string
     code: string
-    type?: string | null
+    filePath?: string | null
     description?: string | null
     dateCollected?: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
 
-  export type EvidencesUncheckedCreateWithoutCaseInput = {
+  export type MemosUncheckedCreateWithoutCaseInput = {
     id?: string
     code: string
-    type?: string | null
+    filePath?: string | null
     description?: string | null
     dateCollected?: Date | string
     createdAt?: Date | string
     updatedAt?: Date | string | null
   }
 
-  export type EvidencesCreateOrConnectWithoutCaseInput = {
-    where: EvidencesWhereUniqueInput
-    create: XOR<EvidencesCreateWithoutCaseInput, EvidencesUncheckedCreateWithoutCaseInput>
+  export type MemosCreateOrConnectWithoutCaseInput = {
+    where: MemosWhereUniqueInput
+    create: XOR<MemosCreateWithoutCaseInput, MemosUncheckedCreateWithoutCaseInput>
   }
 
-  export type EvidencesCreateManyCaseInputEnvelope = {
-    data: EvidencesCreateManyCaseInput | EvidencesCreateManyCaseInput[]
+  export type MemosCreateManyCaseInputEnvelope = {
+    data: MemosCreateManyCaseInput | MemosCreateManyCaseInput[]
     skipDuplicates?: boolean
   }
 
@@ -15213,34 +15240,34 @@ export namespace Prisma {
     updatedAt?: DateTimeFilter<"Report"> | Date | string
   }
 
-  export type EvidencesUpsertWithWhereUniqueWithoutCaseInput = {
-    where: EvidencesWhereUniqueInput
-    update: XOR<EvidencesUpdateWithoutCaseInput, EvidencesUncheckedUpdateWithoutCaseInput>
-    create: XOR<EvidencesCreateWithoutCaseInput, EvidencesUncheckedCreateWithoutCaseInput>
+  export type MemosUpsertWithWhereUniqueWithoutCaseInput = {
+    where: MemosWhereUniqueInput
+    update: XOR<MemosUpdateWithoutCaseInput, MemosUncheckedUpdateWithoutCaseInput>
+    create: XOR<MemosCreateWithoutCaseInput, MemosUncheckedCreateWithoutCaseInput>
   }
 
-  export type EvidencesUpdateWithWhereUniqueWithoutCaseInput = {
-    where: EvidencesWhereUniqueInput
-    data: XOR<EvidencesUpdateWithoutCaseInput, EvidencesUncheckedUpdateWithoutCaseInput>
+  export type MemosUpdateWithWhereUniqueWithoutCaseInput = {
+    where: MemosWhereUniqueInput
+    data: XOR<MemosUpdateWithoutCaseInput, MemosUncheckedUpdateWithoutCaseInput>
   }
 
-  export type EvidencesUpdateManyWithWhereWithoutCaseInput = {
-    where: EvidencesScalarWhereInput
-    data: XOR<EvidencesUpdateManyMutationInput, EvidencesUncheckedUpdateManyWithoutCaseInput>
+  export type MemosUpdateManyWithWhereWithoutCaseInput = {
+    where: MemosScalarWhereInput
+    data: XOR<MemosUpdateManyMutationInput, MemosUncheckedUpdateManyWithoutCaseInput>
   }
 
-  export type EvidencesScalarWhereInput = {
-    AND?: EvidencesScalarWhereInput | EvidencesScalarWhereInput[]
-    OR?: EvidencesScalarWhereInput[]
-    NOT?: EvidencesScalarWhereInput | EvidencesScalarWhereInput[]
-    id?: StringFilter<"Evidences"> | string
-    code?: StringFilter<"Evidences"> | string
-    type?: StringNullableFilter<"Evidences"> | string | null
-    description?: StringNullableFilter<"Evidences"> | string | null
-    dateCollected?: DateTimeFilter<"Evidences"> | Date | string
-    caseId?: StringFilter<"Evidences"> | string
-    createdAt?: DateTimeFilter<"Evidences"> | Date | string
-    updatedAt?: DateTimeNullableFilter<"Evidences"> | Date | string | null
+  export type MemosScalarWhereInput = {
+    AND?: MemosScalarWhereInput | MemosScalarWhereInput[]
+    OR?: MemosScalarWhereInput[]
+    NOT?: MemosScalarWhereInput | MemosScalarWhereInput[]
+    id?: StringFilter<"Memos"> | string
+    code?: StringFilter<"Memos"> | string
+    filePath?: StringNullableFilter<"Memos"> | string | null
+    description?: StringNullableFilter<"Memos"> | string | null
+    dateCollected?: DateTimeFilter<"Memos"> | Date | string
+    caseId?: StringFilter<"Memos"> | string
+    createdAt?: DateTimeFilter<"Memos"> | Date | string
+    updatedAt?: DateTimeNullableFilter<"Memos"> | Date | string | null
   }
 
   export type NotesUpsertWithWhereUniqueWithoutCaseInput = {
@@ -15302,7 +15329,7 @@ export namespace Prisma {
     updatedAt?: DateTimeNullableFilter<"UserCases"> | Date | string | null
   }
 
-  export type CaseCreateWithoutEvidencesInput = {
+  export type CaseCreateWithoutMemosInput = {
     id?: string
     code: string
     title?: string | null
@@ -15310,6 +15337,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     description?: string | null
@@ -15332,7 +15360,7 @@ export namespace Prisma {
     userCases?: UserCasesCreateNestedManyWithoutCaseInput
   }
 
-  export type CaseUncheckedCreateWithoutEvidencesInput = {
+  export type CaseUncheckedCreateWithoutMemosInput = {
     id?: string
     code: string
     title?: string | null
@@ -15340,6 +15368,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     talukaId?: string | null
@@ -15362,23 +15391,23 @@ export namespace Prisma {
     userCases?: UserCasesUncheckedCreateNestedManyWithoutCaseInput
   }
 
-  export type CaseCreateOrConnectWithoutEvidencesInput = {
+  export type CaseCreateOrConnectWithoutMemosInput = {
     where: CaseWhereUniqueInput
-    create: XOR<CaseCreateWithoutEvidencesInput, CaseUncheckedCreateWithoutEvidencesInput>
+    create: XOR<CaseCreateWithoutMemosInput, CaseUncheckedCreateWithoutMemosInput>
   }
 
-  export type CaseUpsertWithoutEvidencesInput = {
-    update: XOR<CaseUpdateWithoutEvidencesInput, CaseUncheckedUpdateWithoutEvidencesInput>
-    create: XOR<CaseCreateWithoutEvidencesInput, CaseUncheckedCreateWithoutEvidencesInput>
+  export type CaseUpsertWithoutMemosInput = {
+    update: XOR<CaseUpdateWithoutMemosInput, CaseUncheckedUpdateWithoutMemosInput>
+    create: XOR<CaseCreateWithoutMemosInput, CaseUncheckedCreateWithoutMemosInput>
     where?: CaseWhereInput
   }
 
-  export type CaseUpdateToOneWithWhereWithoutEvidencesInput = {
+  export type CaseUpdateToOneWithWhereWithoutMemosInput = {
     where?: CaseWhereInput
-    data: XOR<CaseUpdateWithoutEvidencesInput, CaseUncheckedUpdateWithoutEvidencesInput>
+    data: XOR<CaseUpdateWithoutMemosInput, CaseUncheckedUpdateWithoutMemosInput>
   }
 
-  export type CaseUpdateWithoutEvidencesInput = {
+  export type CaseUpdateWithoutMemosInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15386,6 +15415,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15408,7 +15438,7 @@ export namespace Prisma {
     userCases?: UserCasesUpdateManyWithoutCaseNestedInput
   }
 
-  export type CaseUncheckedUpdateWithoutEvidencesInput = {
+  export type CaseUncheckedUpdateWithoutMemosInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
     title?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15416,6 +15446,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     talukaId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15446,6 +15477,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     description?: string | null
@@ -15464,7 +15496,7 @@ export namespace Prisma {
     deh?: DehCreateNestedOneWithoutCaseInput
     forwardedToMukhtiarkar?: UserCreateNestedOneWithoutForwardedCasesInput
     reports?: ReportCreateNestedManyWithoutCaseInput
-    evidences?: EvidencesCreateNestedManyWithoutCaseInput
+    memos?: MemosCreateNestedManyWithoutCaseInput
     userCases?: UserCasesCreateNestedManyWithoutCaseInput
   }
 
@@ -15476,6 +15508,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     talukaId?: string | null
@@ -15494,7 +15527,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     reports?: ReportUncheckedCreateNestedManyWithoutCaseInput
-    evidences?: EvidencesUncheckedCreateNestedManyWithoutCaseInput
+    memos?: MemosUncheckedCreateNestedManyWithoutCaseInput
     userCases?: UserCasesUncheckedCreateNestedManyWithoutCaseInput
   }
 
@@ -15522,6 +15555,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15540,7 +15574,7 @@ export namespace Prisma {
     deh?: DehUpdateOneWithoutCaseNestedInput
     forwardedToMukhtiarkar?: UserUpdateOneWithoutForwardedCasesNestedInput
     reports?: ReportUpdateManyWithoutCaseNestedInput
-    evidences?: EvidencesUpdateManyWithoutCaseNestedInput
+    memos?: MemosUpdateManyWithoutCaseNestedInput
     userCases?: UserCasesUpdateManyWithoutCaseNestedInput
   }
 
@@ -15552,6 +15586,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     talukaId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -15570,7 +15605,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     reports?: ReportUncheckedUpdateManyWithoutCaseNestedInput
-    evidences?: EvidencesUncheckedUpdateManyWithoutCaseNestedInput
+    memos?: MemosUncheckedUpdateManyWithoutCaseNestedInput
     userCases?: UserCasesUncheckedUpdateManyWithoutCaseNestedInput
   }
 
@@ -15608,6 +15643,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     description?: string | null
@@ -15625,7 +15661,7 @@ export namespace Prisma {
     deh?: DehCreateNestedOneWithoutCaseInput
     forwardedToMukhtiarkar?: UserCreateNestedOneWithoutForwardedCasesInput
     reports?: ReportCreateNestedManyWithoutCaseInput
-    evidences?: EvidencesCreateNestedManyWithoutCaseInput
+    memos?: MemosCreateNestedManyWithoutCaseInput
     notes?: NotesCreateNestedManyWithoutCaseInput
     userCases?: UserCasesCreateNestedManyWithoutCaseInput
   }
@@ -15638,6 +15674,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     dehId?: string | null
@@ -15655,7 +15692,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     reports?: ReportUncheckedCreateNestedManyWithoutCaseInput
-    evidences?: EvidencesUncheckedCreateNestedManyWithoutCaseInput
+    memos?: MemosUncheckedCreateNestedManyWithoutCaseInput
     notes?: NotesUncheckedCreateNestedManyWithoutCaseInput
     userCases?: UserCasesUncheckedCreateNestedManyWithoutCaseInput
   }
@@ -15724,6 +15761,7 @@ export namespace Prisma {
     status?: StringNullableFilter<"Case"> | string | null
     priority?: StringNullableFilter<"Case"> | string | null
     dateOfInstitution?: DateTimeNullableFilter<"Case"> | Date | string | null
+    orderOfDate?: DateTimeNullableFilter<"Case"> | Date | string | null
     nextDate?: DateTimeNullableFilter<"Case"> | Date | string | null
     location?: StringNullableFilter<"Case"> | string | null
     talukaId?: StringNullableFilter<"Case"> | string | null
@@ -15772,6 +15810,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     description?: string | null
@@ -15789,7 +15828,7 @@ export namespace Prisma {
     taluka?: TalukaCreateNestedOneWithoutCaseInput
     forwardedToMukhtiarkar?: UserCreateNestedOneWithoutForwardedCasesInput
     reports?: ReportCreateNestedManyWithoutCaseInput
-    evidences?: EvidencesCreateNestedManyWithoutCaseInput
+    memos?: MemosCreateNestedManyWithoutCaseInput
     notes?: NotesCreateNestedManyWithoutCaseInput
     userCases?: UserCasesCreateNestedManyWithoutCaseInput
   }
@@ -15802,6 +15841,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     talukaId?: string | null
@@ -15819,7 +15859,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     reports?: ReportUncheckedCreateNestedManyWithoutCaseInput
-    evidences?: EvidencesUncheckedCreateNestedManyWithoutCaseInput
+    memos?: MemosUncheckedCreateNestedManyWithoutCaseInput
     notes?: NotesUncheckedCreateNestedManyWithoutCaseInput
     userCases?: UserCasesUncheckedCreateNestedManyWithoutCaseInput
   }
@@ -15941,6 +15981,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     description?: string | null
@@ -15958,7 +15999,7 @@ export namespace Prisma {
     taluka?: TalukaCreateNestedOneWithoutCaseInput
     deh?: DehCreateNestedOneWithoutCaseInput
     reports?: ReportCreateNestedManyWithoutCaseInput
-    evidences?: EvidencesCreateNestedManyWithoutCaseInput
+    memos?: MemosCreateNestedManyWithoutCaseInput
     notes?: NotesCreateNestedManyWithoutCaseInput
     userCases?: UserCasesCreateNestedManyWithoutCaseInput
   }
@@ -15971,6 +16012,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     talukaId?: string | null
@@ -15988,7 +16030,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     reports?: ReportUncheckedCreateNestedManyWithoutCaseInput
-    evidences?: EvidencesUncheckedCreateNestedManyWithoutCaseInput
+    memos?: MemosUncheckedCreateNestedManyWithoutCaseInput
     notes?: NotesUncheckedCreateNestedManyWithoutCaseInput
     userCases?: UserCasesUncheckedCreateNestedManyWithoutCaseInput
   }
@@ -16059,6 +16101,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     description?: string | null
@@ -16077,7 +16120,7 @@ export namespace Prisma {
     deh?: DehCreateNestedOneWithoutCaseInput
     forwardedToMukhtiarkar?: UserCreateNestedOneWithoutForwardedCasesInput
     reports?: ReportCreateNestedManyWithoutCaseInput
-    evidences?: EvidencesCreateNestedManyWithoutCaseInput
+    memos?: MemosCreateNestedManyWithoutCaseInput
     notes?: NotesCreateNestedManyWithoutCaseInput
   }
 
@@ -16089,6 +16132,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     talukaId?: string | null
@@ -16107,7 +16151,7 @@ export namespace Prisma {
     createdAt?: Date | string
     updatedAt?: Date | string | null
     reports?: ReportUncheckedCreateNestedManyWithoutCaseInput
-    evidences?: EvidencesUncheckedCreateNestedManyWithoutCaseInput
+    memos?: MemosUncheckedCreateNestedManyWithoutCaseInput
     notes?: NotesUncheckedCreateNestedManyWithoutCaseInput
   }
 
@@ -16201,6 +16245,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16219,7 +16264,7 @@ export namespace Prisma {
     deh?: DehUpdateOneWithoutCaseNestedInput
     forwardedToMukhtiarkar?: UserUpdateOneWithoutForwardedCasesNestedInput
     reports?: ReportUpdateManyWithoutCaseNestedInput
-    evidences?: EvidencesUpdateManyWithoutCaseNestedInput
+    memos?: MemosUpdateManyWithoutCaseNestedInput
     notes?: NotesUpdateManyWithoutCaseNestedInput
   }
 
@@ -16231,6 +16276,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     talukaId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16249,7 +16295,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     reports?: ReportUncheckedUpdateManyWithoutCaseNestedInput
-    evidences?: EvidencesUncheckedUpdateManyWithoutCaseNestedInput
+    memos?: MemosUncheckedUpdateManyWithoutCaseNestedInput
     notes?: NotesUncheckedUpdateManyWithoutCaseNestedInput
   }
 
@@ -16339,6 +16385,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     description?: string | null
@@ -16356,7 +16403,7 @@ export namespace Prisma {
     taluka?: TalukaCreateNestedOneWithoutCaseInput
     deh?: DehCreateNestedOneWithoutCaseInput
     forwardedToMukhtiarkar?: UserCreateNestedOneWithoutForwardedCasesInput
-    evidences?: EvidencesCreateNestedManyWithoutCaseInput
+    memos?: MemosCreateNestedManyWithoutCaseInput
     notes?: NotesCreateNestedManyWithoutCaseInput
     userCases?: UserCasesCreateNestedManyWithoutCaseInput
   }
@@ -16369,6 +16416,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     talukaId?: string | null
@@ -16386,7 +16434,7 @@ export namespace Prisma {
     forwardedByName?: string | null
     createdAt?: Date | string
     updatedAt?: Date | string | null
-    evidences?: EvidencesUncheckedCreateNestedManyWithoutCaseInput
+    memos?: MemosUncheckedCreateNestedManyWithoutCaseInput
     notes?: NotesUncheckedCreateNestedManyWithoutCaseInput
     userCases?: UserCasesUncheckedCreateNestedManyWithoutCaseInput
   }
@@ -16415,6 +16463,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16432,7 +16481,7 @@ export namespace Prisma {
     taluka?: TalukaUpdateOneWithoutCaseNestedInput
     deh?: DehUpdateOneWithoutCaseNestedInput
     forwardedToMukhtiarkar?: UserUpdateOneWithoutForwardedCasesNestedInput
-    evidences?: EvidencesUpdateManyWithoutCaseNestedInput
+    memos?: MemosUpdateManyWithoutCaseNestedInput
     notes?: NotesUpdateManyWithoutCaseNestedInput
     userCases?: UserCasesUpdateManyWithoutCaseNestedInput
   }
@@ -16445,6 +16494,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     talukaId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16462,7 +16512,7 @@ export namespace Prisma {
     forwardedByName?: NullableStringFieldUpdateOperationsInput | string | null
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    evidences?: EvidencesUncheckedUpdateManyWithoutCaseNestedInput
+    memos?: MemosUncheckedUpdateManyWithoutCaseNestedInput
     notes?: NotesUncheckedUpdateManyWithoutCaseNestedInput
     userCases?: UserCasesUncheckedUpdateManyWithoutCaseNestedInput
   }
@@ -16476,10 +16526,10 @@ export namespace Prisma {
     updatedAt?: Date | string
   }
 
-  export type EvidencesCreateManyCaseInput = {
+  export type MemosCreateManyCaseInput = {
     id?: string
     code: string
-    type?: string | null
+    filePath?: string | null
     description?: string | null
     dateCollected?: Date | string
     createdAt?: Date | string
@@ -16532,30 +16582,30 @@ export namespace Prisma {
     updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
-  export type EvidencesUpdateWithoutCaseInput = {
+  export type MemosUpdateWithoutCaseInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    type?: NullableStringFieldUpdateOperationsInput | string | null
+    filePath?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     dateCollected?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type EvidencesUncheckedUpdateWithoutCaseInput = {
+  export type MemosUncheckedUpdateWithoutCaseInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    type?: NullableStringFieldUpdateOperationsInput | string | null
+    filePath?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     dateCollected?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type EvidencesUncheckedUpdateManyWithoutCaseInput = {
+  export type MemosUncheckedUpdateManyWithoutCaseInput = {
     id?: StringFieldUpdateOperationsInput | string
     code?: StringFieldUpdateOperationsInput | string
-    type?: NullableStringFieldUpdateOperationsInput | string | null
+    filePath?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
     dateCollected?: DateTimeFieldUpdateOperationsInput | Date | string
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -16634,6 +16684,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     dehId?: string | null
@@ -16683,6 +16734,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16700,7 +16752,7 @@ export namespace Prisma {
     deh?: DehUpdateOneWithoutCaseNestedInput
     forwardedToMukhtiarkar?: UserUpdateOneWithoutForwardedCasesNestedInput
     reports?: ReportUpdateManyWithoutCaseNestedInput
-    evidences?: EvidencesUpdateManyWithoutCaseNestedInput
+    memos?: MemosUpdateManyWithoutCaseNestedInput
     notes?: NotesUpdateManyWithoutCaseNestedInput
     userCases?: UserCasesUpdateManyWithoutCaseNestedInput
   }
@@ -16713,6 +16765,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     dehId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16730,7 +16783,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     reports?: ReportUncheckedUpdateManyWithoutCaseNestedInput
-    evidences?: EvidencesUncheckedUpdateManyWithoutCaseNestedInput
+    memos?: MemosUncheckedUpdateManyWithoutCaseNestedInput
     notes?: NotesUncheckedUpdateManyWithoutCaseNestedInput
     userCases?: UserCasesUncheckedUpdateManyWithoutCaseNestedInput
   }
@@ -16743,6 +16796,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     dehId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16769,6 +16823,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     talukaId?: string | null
@@ -16795,6 +16850,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16812,7 +16868,7 @@ export namespace Prisma {
     taluka?: TalukaUpdateOneWithoutCaseNestedInput
     forwardedToMukhtiarkar?: UserUpdateOneWithoutForwardedCasesNestedInput
     reports?: ReportUpdateManyWithoutCaseNestedInput
-    evidences?: EvidencesUpdateManyWithoutCaseNestedInput
+    memos?: MemosUpdateManyWithoutCaseNestedInput
     notes?: NotesUpdateManyWithoutCaseNestedInput
     userCases?: UserCasesUpdateManyWithoutCaseNestedInput
   }
@@ -16825,6 +16881,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     talukaId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16842,7 +16899,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     reports?: ReportUncheckedUpdateManyWithoutCaseNestedInput
-    evidences?: EvidencesUncheckedUpdateManyWithoutCaseNestedInput
+    memos?: MemosUncheckedUpdateManyWithoutCaseNestedInput
     notes?: NotesUncheckedUpdateManyWithoutCaseNestedInput
     userCases?: UserCasesUncheckedUpdateManyWithoutCaseNestedInput
   }
@@ -16855,6 +16912,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     talukaId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16899,6 +16957,7 @@ export namespace Prisma {
     status?: string | null
     priority?: string | null
     dateOfInstitution?: Date | string | null
+    orderOfDate?: Date | string | null
     nextDate?: Date | string | null
     location?: string | null
     talukaId?: string | null
@@ -16979,6 +17038,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     description?: NullableStringFieldUpdateOperationsInput | string | null
@@ -16996,7 +17056,7 @@ export namespace Prisma {
     taluka?: TalukaUpdateOneWithoutCaseNestedInput
     deh?: DehUpdateOneWithoutCaseNestedInput
     reports?: ReportUpdateManyWithoutCaseNestedInput
-    evidences?: EvidencesUpdateManyWithoutCaseNestedInput
+    memos?: MemosUpdateManyWithoutCaseNestedInput
     notes?: NotesUpdateManyWithoutCaseNestedInput
     userCases?: UserCasesUpdateManyWithoutCaseNestedInput
   }
@@ -17009,6 +17069,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     talukaId?: NullableStringFieldUpdateOperationsInput | string | null
@@ -17026,7 +17087,7 @@ export namespace Prisma {
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
     updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     reports?: ReportUncheckedUpdateManyWithoutCaseNestedInput
-    evidences?: EvidencesUncheckedUpdateManyWithoutCaseNestedInput
+    memos?: MemosUncheckedUpdateManyWithoutCaseNestedInput
     notes?: NotesUncheckedUpdateManyWithoutCaseNestedInput
     userCases?: UserCasesUncheckedUpdateManyWithoutCaseNestedInput
   }
@@ -17039,6 +17100,7 @@ export namespace Prisma {
     status?: NullableStringFieldUpdateOperationsInput | string | null
     priority?: NullableStringFieldUpdateOperationsInput | string | null
     dateOfInstitution?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    orderOfDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     nextDate?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     location?: NullableStringFieldUpdateOperationsInput | string | null
     talukaId?: NullableStringFieldUpdateOperationsInput | string | null

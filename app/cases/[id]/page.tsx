@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import MainLayout from '@/app/components/layout/MainLayout';
 import Link from 'next/link';
-import ViewEvidenceModal from '@/app/components/cases/ViewEvidenceModal';
+import ViewMemoModal from '@/app/components/cases/ViewMemoModal';
 import { useParams } from 'next/navigation';
 import { Cases } from '@/app/components/interface/types';
 import { useAuth } from '@/app/context/AuthContext';
@@ -231,6 +231,10 @@ export default function CaseDetailPage() {
                 <div>
                   <div className="text-sm font-medium text-gray-500 mb-1">Next Date</div>
                   <div className="text-gray-800">{caseData.nextDate?.toString().split('T')[0]} | {caseData.nextDate?.toString().split('T')[1].split('.')[0]}</div>
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-gray-500 mb-1">Order Of Date</div>
+                  <div className="text-gray-800">{caseData.orderOfDate?.toString().split('T')[0]} | {caseData.orderOfDate?.toString().split('T')[1].split('.')[0]}</div>
                 </div>
               </div>
 
@@ -775,39 +779,37 @@ export default function CaseDetailPage() {
 
           <div className="mt-8 bg-white rounded-lg shadow-lg overflow-hidden">
             <div className="p-6 border-b border-gray-200">
-              <h3 className="text-lg font-semibold text-gray-800">Evidence</h3>
+              <h3 className="text-lg font-semibold text-gray-800">Memo Of Complaint</h3>
             </div>
             <div className="p-6">
-              {caseData.evidences != null && caseData.evidences.length === 0 ? (
-                <p className="text-gray-500">No evidence added to this case.</p>
+              {caseData.memos != null && caseData.memos.length === 0 ? (
+                <p className="text-gray-500">No memo of complaint added to this case.</p>
               ) : (
                 <div className="overflow-x-auto">
                   <table className="min-w-full divide-y divide-gray-200">
                     <thead className="bg-gray-50">
                       <tr>
                         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">ID</th>
-                        <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Type</th>
                         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
                         <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Date Collected</th>
                         <th scope="col" className="px-6 py-3 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
                       </tr>
                     </thead>
                     <tbody className="bg-white divide-y divide-gray-200">
-                      {caseData.evidences != null ? caseData.evidences.map(evidence => (
-                        <tr key={evidence.id}>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{evidence.code}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{evidence.type}</td>
+                      {caseData.memos != null ? caseData.memos.map(memo => (
+                        <tr key={memo.id}>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{memo.code}</td>
                           <td className="px-6 py-4 text-sm text-gray-500">
-                            <span title={evidence.description}>
-                              {evidence.description != null ? evidence.description.length > 50 
-                                ? `${evidence.description.substring(0, 50)}...` 
-                                : evidence.description : ''}
+                            <span title={memo.description}>
+                              {memo.description != null ? memo.description.length > 50 
+                                ? `${memo.description.substring(0, 50)}...` 
+                                : memo.description : ''}
                             </span>
                           </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{evidence.dateCollected?.toString().split('T')[0]} | {evidence.dateCollected?.toString().split('T')[1].split('.')[0]}</td>
+                          <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{memo.dateCollected?.toString().split('T')[0]} | {memo.dateCollected?.toString().split('T')[1].split('.')[0]}</td>
                           <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-right">
                             <div className="flex justify-end space-x-3">
-                              <ViewEvidenceModal evidence={evidence} />
+                              <ViewMemoModal memo={memo} />
                             </div>
                           </td>
                         </tr>

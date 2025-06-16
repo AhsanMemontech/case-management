@@ -2,12 +2,13 @@
 import React, { useState, useEffect } from 'react';
 import MainLayout from '@/app/components/layout/MainLayout';
 import Link from 'next/link';
-import AddEvidenceModal from '@/app/components/cases/AddEvidenceModal';
+import AddMemoModal from '@/app/components/cases/AddMemoModal';
 import AddNoteModal from '@/app/components/cases/AddNoteModal';
-import EditEvidenceModal from '@/app/components/cases/EditEvidenceModal';
+import EditMemoModal from '@/app/components/cases/EditMemoModal';
 import { useParams } from 'next/navigation';
-import { Cases, Evidences, Notes } from '@/app/components/interface/types';
+import { Cases, Memos, Notes } from '@/app/components/interface/types';
 import WithRoleAccess from '@/app/components/auth/withRoleAccess';
+import Image from 'next/image';
 
 export default function EditCasePage() {
   const getCurrentLocalDatetime = (): string => {
@@ -25,7 +26,7 @@ export default function EditCasePage() {
   // Add state for tracking added items
   //const [officers, setOfficers] = useState<Array<Officers>>([]);
   //const [persons, setPersons] = useState<Array<Persons>>([]);
-  const [evidences, setEvidences] = useState<Array<Evidences>>([]);
+  const [memos, setMemos] = useState<Array<Memos>>([]);
   const [notes, setNotes] = useState<Array<Notes>>([]);
 
   const [talukas, setTalukas] = useState<Array<{ id: string; name: string }>>([]);
@@ -126,7 +127,7 @@ export default function EditCasePage() {
 
         //setOfficers(data.involvedOfficers);
         //setPersons(data.involvedPersons);
-        setEvidences(data.evidences);
+        setMemos(data.memos);
         setNotes(data.notes);
         
       } catch (err) {
@@ -159,8 +160,8 @@ export default function EditCasePage() {
   //   setPersons([...persons, newPerson]);
   // };
 
-  const handleEvidenceAdded = (newEvidence : Evidences) => {
-    setEvidences([...evidences, newEvidence]);
+  const handleMemoAdded = (newMemo : Memos) => {
+    setMemos([...memos, newMemo]);
   };
   
   const handleNoteAdded = (newNote : Notes) => {
@@ -171,7 +172,7 @@ export default function EditCasePage() {
   const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
   // const [officerToDelete, setOfficerToDelete] = useState<string | null>(null);
   // const [personToDelete, setPersonToDelete] = useState<string | null>(null);
-  const [evidenceToDelete, setEvidenceToDelete] = useState<string | null>(null);
+  const [memoToDelete, setMemoToDelete] = useState<string | null>(null);
   const [noteToDelete, setNoteToDelete] = useState<string | null>(null);
   
   // Handler functions for removing items
@@ -185,8 +186,8 @@ export default function EditCasePage() {
   //   setShowDeleteConfirm(true);
   // };
 
-  const handleRemoveEvidence = (id: string) => {
-    setEvidenceToDelete(id);
+  const handleRemoveMemo = (id: string) => {
+    setMemoToDelete(id);
     setShowDeleteConfirm(true);
   };
 
@@ -197,7 +198,7 @@ export default function EditCasePage() {
   
   // Add a new function to handle the actual deletion
   const confirmDeletePerson = async () => {
-    if (!evidenceToDelete && !noteToDelete) {
+    if (!memoToDelete && !noteToDelete) {
       setShowDeleteConfirm(false);
       return;
     }
@@ -236,8 +237,8 @@ export default function EditCasePage() {
       //   setPersons(persons.filter(person => person.id !== personToDelete));
       // }
       // else 
-      if(evidenceToDelete){
-        const response = await fetch(`/api/evidences/${evidenceToDelete}`, {
+      if(memoToDelete){
+        const response = await fetch(`/api/memo/${memoToDelete}`, {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
@@ -245,11 +246,11 @@ export default function EditCasePage() {
         });
         
         if (!response.ok) {
-          throw new Error(`Failed to delete evidence: ${response.status}`);
+          throw new Error(`Failed to delete memo: ${response.status}`);
         }
         
         // Remove the person from state after successful API call
-        setEvidences(evidences.filter(evidence => evidence.id !== evidenceToDelete));
+        setMemos(memos.filter(memo => memo.id !== memoToDelete));
       }
       else if(noteToDelete){
         const response = await fetch(`/api/notes/${noteToDelete}`, {
@@ -275,7 +276,7 @@ export default function EditCasePage() {
       setShowDeleteConfirm(false);
       //setOfficerToDelete(null);
       //setPersonToDelete(null);
-      setEvidenceToDelete(null);
+      setMemoToDelete(null);
       setNoteToDelete(null);
     }
   };
@@ -295,19 +296,26 @@ export default function EditCasePage() {
   //   }));
   // };
 
-  const handleEvidenceUpdated = (updatedEvidence: Evidences) => {
-    const updatedEvidences = evidences.map(evidence => 
-      evidence.id === updatedEvidence.id ? updatedEvidence : evidence
+  const handleMemoUpdated = (updatedMemo: Memos) => {
+    const updatedMemos = memos.map(memo => 
+      memo.id === updatedMemo.id ? updatedMemo : memo
     );
     
-    setEvidences(updatedEvidences);
+    setMemos(updatedMemos);
 
     setCaseData(prev => ({
       ...prev,
-      evidences: prev?.evidences?.map(item => 
-        item.id === updatedEvidence.id ? updatedEvidence : item
+      memos: prev?.memos?.map(item => 
+        item.id === updatedMemo.id ? updatedMemo : item
       )
     }));
+  };
+
+  const OpenImage = (filePath: string) => {
+    const imageWindow = window.open('', '_blank');
+    if (imageWindow) {
+      imageWindow.document.write(`<img src="${filePath}" alt="Image" />`);
+    }
   };
 
   // Add a save handler function
@@ -320,7 +328,7 @@ export default function EditCasePage() {
         ...caseData,
         //involvedOfficers: officers,
         //involvedPersons: persons,
-        evidences: evidences,
+        memos: memos,
         notes: notes
       };
       
@@ -438,7 +446,7 @@ export default function EditCasePage() {
                   </div>
                 </div>
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <div>
                   <label htmlFor="taluka" className="block text-sm font-medium text-gray-700 mb-1">
                     Taluka
@@ -477,9 +485,7 @@ export default function EditCasePage() {
                     ))}
                   </select>
                 </div>
-              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <div>
                   <label htmlFor="status" className="block text-sm font-medium text-gray-700 mb-1">Status</label>
                   <select 
@@ -493,6 +499,9 @@ export default function EditCasePage() {
                     <option value="Closed">Closed</option>
                   </select>
                 </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <div>
                   <label htmlFor="dateOfInstitution" className="block text-sm font-medium text-gray-700 mb-1">Date Of Institution</label>
                   <input 
@@ -509,6 +518,16 @@ export default function EditCasePage() {
                     type="datetime-local" 
                     id="nextDate" 
                     value={caseData.nextDate?.toString().slice(0, 16) ?? getCurrentLocalDatetime()}
+                    onChange={handleInputChange}
+                    className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 text-gray-500"
+                  />
+                </div>
+                <div>
+                  <label htmlFor="orderOfDate" className="block text-sm font-medium text-gray-700 mb-1">Order Of Date</label>
+                  <input 
+                    type="datetime-local" 
+                    id="orderOfDate" 
+                    value={caseData.orderOfDate?.toString().slice(0, 16) ?? getCurrentLocalDatetime()}
                     onChange={handleInputChange}
                     className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 text-gray-500"
                   />
@@ -610,21 +629,58 @@ export default function EditCasePage() {
               </div> */}
 
               <div className="mb-6">
-                <h3 className="text-lg font-medium text-gray-800 mb-3">Evidence</h3>
+                <h3 className="text-lg font-medium text-gray-800 mb-3">Memo Of Complaint</h3>
                 <div className="bg-gray-50 p-4 rounded-md border border-gray-200">
                   <div className="flex justify-between items-center mb-4">
                     <span className="text-sm font-medium text-gray-700">
-                      {evidences.length === 0 ? "No evidence added yet" : `${evidences.length} evidence item(s) added`}
+                      {memos.length === 0 ? "No Memo Of Complaint added yet" : `${memos.length} memo of complaint item(s) added`}
                     </span>
-                    <AddEvidenceModal id={id?.toString()} onEvidenceAdded={handleEvidenceAdded}/>
+                    <AddMemoModal id={id?.toString()} onMemoAdded={handleMemoAdded}/>
                   </div>
                   
-                  {evidences.length > 0 && (
+                  {memos.length > 0 && (
                     <div className="space-y-3">
-                      {evidences.map(item => (
+                      {memos.map(item => (
                         <div key={item.id ?? item.code ?? ''} className="flex items-center justify-between bg-white p-3 rounded shadow-sm">
+                        {item.filePath && (
+                          <div className='uploadedMemo'>
+                            {item.filePath?.split('.').pop() !== 'txt' && (
+                              <div className='flex'
+                                  onClick={() => OpenImage(item.filePath || '')}
+                                  style={{cursor: 'pointer'}}
+                                >
+                                <div className='text-blue-700'>
+                                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                  </svg> 
+                                </div>
+                                <Image 
+                                  src={item.filePath || ''}
+                                  alt='Memo Image'
+                                  width={50}
+                                  height={50}
+                                >
+                                </Image>
+                              </div>
+                            )} 
+                            {item.filePath?.split('.').pop() === 'txt' && (
+                              <a 
+                                className='text-blue-700 text-sm'
+                                href={item.filePath || ''}
+                                target="_blank"
+                                style={{cursor: 'pointer', fontWeight: 'bold', fontSize: '12px'}}
+                              >
+                                <div className='flex'>
+                                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                                  </svg>
+                                  <span>Text File</span>
+                                </div>
+                              </a>
+                            )}
+                          </div>
+                        )}
                           <div>
-                            <div className="font-medium text-gray-600">{item.type}</div>
                             <div className="text-sm text-gray-500">
                               <span title={item.description}>
                                     {item.description != null && item.description.length > 50 
@@ -634,10 +690,10 @@ export default function EditCasePage() {
                             </div>
                           </div>
                           <div className="flex items-center space-x-2">
-                            <EditEvidenceModal evidence={item} onEvidenceUpdated={handleEvidenceUpdated} />
+                            <EditMemoModal memo={item} onMemoUpdated={handleMemoUpdated} />
                             <button 
                               type="button" 
-                              onClick={() => handleRemoveEvidence(item.id ?? item.code ?? '')}
+                              onClick={() => handleRemoveMemo(item.id ?? item.code ?? '')}
                               className="text-red-600 hover:text-red-800"
                             >
                               <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">

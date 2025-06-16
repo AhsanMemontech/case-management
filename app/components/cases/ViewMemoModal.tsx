@@ -1,13 +1,13 @@
 'use client';
 import React, { useState } from 'react';
 import { Dialog, Transition } from '@headlessui/react';
-import { Evidences } from '../interface/types';
+import { Memos } from '../interface/types';
 
-type ViewEvidenceModalProps = {
-  evidence: Evidences;
+type ViewMemoModalProps = {
+  memo: Memos;
 };
 
-export default function ViewEvidenceModal({ evidence }: ViewEvidenceModalProps) {
+export default function ViewMemoModal({ memo }: ViewMemoModalProps) {
   const [isOpen, setIsOpen] = useState(false);
 
   function closeModal() {
@@ -61,38 +61,47 @@ export default function ViewEvidenceModal({ evidence }: ViewEvidenceModalProps) 
                     as="h3"
                     className="text-lg font-medium leading-6 text-gray-900"
                   >
-                    Evidence Details
+                    Memo Of Complaint Details
                   </Dialog.Title>
                   
                   <div className="mt-4 space-y-3">
                     <div>
-                      <div className="text-sm font-medium text-gray-500">ID</div>
-                      <div className="text-base text-gray-900">{evidence.id}</div>
-                    </div>
-                    
-                    <div>
-                      <div className="text-sm font-medium text-gray-500">Type</div>
-                      <div className="text-base text-gray-900">{evidence.type}</div>
+                      <div className="text-sm font-medium text-gray-500">Uploaded Report</div>
+                      <div className="flex text-base text-gray-900">
+                      {memo.filePath && (
+                          <a 
+                            href={memo.filePath}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-3 py-1 bg-green-600 text-white text-sm rounded hover:bg-green-700 flex items-center"
+                          >
+                            <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                            </svg>
+                            Download
+                          </a>
+                        )}
+                      </div>
                     </div>
                     
                     <div>
                       <div className="text-sm font-medium text-gray-500">Description</div>
-                      <div className="text-base text-gray-900">{evidence.description}</div>
+                      <div className="text-base text-gray-900">{memo.description}</div>
                     </div>
                     
                     <div>
                       <div className="text-sm font-medium text-gray-500">Date Collected</div>
-                      <div className="text-base text-gray-900">{evidence.dateCollected?.toString().split('T')[0]} | {evidence.dateCollected?.toString().split('T')[1].split('.')[0]}</div>
+                      <div className="text-base text-gray-900">{memo.dateCollected?.toString().split('T')[0]} | {memo.dateCollected?.toString().split('T')[1].split('.')[0]}</div>
                     </div>
 
                     <div>
                       <div className="text-sm font-medium text-gray-500">Created On</div>
-                      <div className="text-base text-gray-900">{evidence.createdAt?.toString().split('T')[0]} | {evidence.createdAt?.toString().split('T')[1].split('.')[0]}</div>
+                      <div className="text-base text-gray-900">{memo.createdAt?.toString().split('T')[0]} | {memo.createdAt?.toString().split('T')[1].split('.')[0]}</div>
                     </div>
 
                     <div>
                       <div className="text-sm font-medium text-gray-500">Updated On</div>
-                      <div className="text-base text-gray-900">{evidence.updatedAt?.toString().split('T')[0]} | {evidence.updatedAt?.toString().split('T')[1].split('.')[0]}</div>
+                      <div className="text-base text-gray-900">{memo.updatedAt?.toString().split('T')[0]} | {memo.updatedAt?.toString().split('T')[1].split('.')[0]}</div>
                     </div>
                   </div>
 

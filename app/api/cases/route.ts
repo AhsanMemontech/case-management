@@ -47,6 +47,7 @@ export async function POST(request: Request) {
         status: data.status || 'Active', 
         //priority: data.priority,
         dateOfInstitution: new Date(data.dateOfInstitution),
+        orderOfDate: new Date(data.orderOfDate),
         nextDate: new Date(data.nextDate),
         location: data.location,
         talukaId: data.talukaId || null,
@@ -56,7 +57,7 @@ export async function POST(request: Request) {
       include: {
         //involvedOfficers: true,
         //involvedPersons: true,
-        evidences: true,
+        memos: true,
         notes: true,
       },
     });
@@ -91,15 +92,15 @@ export async function POST(request: Request) {
     //   }
     // }
     
-    // Add evidence if any
-    if (data.evidences && data.evidences.length > 0) {
-      for (const evidence of data.evidences) {
-        await prisma.evidences.create({
+    // Add memo if any
+    if (data.memos && data.memos.length > 0) {
+      for (const memo of data.memos) {
+        await prisma.memos.create({
           data: {
-            code: evidence.code,
-            type: evidence.type,
-            description: evidence.description,
-            dateCollected: new Date(evidence.dateCollected),
+            code: memo.code,
+            filePath: memo.filePath,
+            description: memo.description,
+            dateCollected: new Date(memo.dateCollected),
             caseId: newCase.id,
           },
         });

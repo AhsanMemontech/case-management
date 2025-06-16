@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import MainLayout from '@/app/components/layout/MainLayout';
 import Link from 'next/link';
-import AddEvidenceModal from '@/app/components/cases/AddEvidenceModal';
+import AddMemoModal from '@/app/components/cases/AddMemoModal';
 import AddNoteModal from '@/app/components/cases/AddNoteModal';
 import { useRouter } from 'next/navigation';
 import { useAuth } from "@/app/context/AuthContext";
@@ -37,10 +37,11 @@ export default function NewCasePage() {
     dehId: '' as string,
     nextDate: getCurrentLocalDatetime() as string,
     dateOfInstitution: getCurrentLocalDatetime() as string,
+    orderOfDate: getCurrentLocalDatetime() as string,
     description: '' as string,
     //involvedOfficers: [] as Array<{id?: string, code: string, name: string, badge: string}>,
     //involvedPersons: [] as Array<{ id?: string, code: string, name: string, role: string, contact: string, addedOn: string }>,
-    evidences: [] as Array<{ id?: string, code: string, type: string, description: string, dateCollected: string }>,
+    memos: [] as Array<{ id?: string, code: string, file: File, description: string, dateCollected: string }>,
     notes: [] as Array<{ id?: string, code: string, title: string, content: string, noteAddedOn: string }>,
   });
 
@@ -67,7 +68,7 @@ export default function NewCasePage() {
   // Add state for tracking added items
   //const [officers, setOfficers] = useState<Array<{ id?: string, code: string, name: string, badge: string }>>([]);
   //const [persons, setPersons] = useState<Array<{ id?: string, code: string, name: string, role: string, contact: string, addedOn: string }>>([]);
-  const [evidences, setEvidences] = useState<Array<{ id?: string, code: string, type: string, description: string, dateCollected: string }>>([]);
+  const [memos, setMemos] = useState<Array<{ id?: string, code: string, file: File, description: string, dateCollected: string }>>([]);
   const [notes, setNotes] = useState<Array<{ id?: string, code: string, title: string, content: string, noteAddedOn: string }>>([]);
 
   // Handle form input changes
@@ -88,8 +89,8 @@ export default function NewCasePage() {
   //   setPersons([...persons, newPerson]);
   // };
 
-  const handleEvidenceAdded = (newEvidence: { id?: string, code: string, type: string, description: string, dateCollected: string }) => {
-    setEvidences([...evidences, newEvidence]);
+  const handleMemoAdded = (newMemo: { id?: string, code: string, file: File, description: string, dateCollected: string }) => {
+    setMemos([...memos, newMemo]);
   };
 
   const handleNoteAdded = (newNote: { id?: string, code: string, title: string, content: string, noteAddedOn: string }) => {
@@ -105,8 +106,8 @@ export default function NewCasePage() {
   //   setPersons(persons.filter(person => person.id !== personId));
   // };
 
-  const handleRemoveEvidence = (evidenceId: string) => {
-    setEvidences(evidences.filter(item => item.id !== evidenceId));
+  const handleRemoveMemo = (memoId: string) => {
+    setMemos(memos.filter(item => item.id !== memoId));
   };
 
   const handleRemoveNote = (noteId: string) => {
@@ -203,6 +204,7 @@ export default function NewCasePage() {
           location: formData.location,
           nextDate: formData.nextDate,
           dateOfInstitution: formData.dateOfInstitution,
+          orderOfDate: formData.orderOfDate,
           description: formData.description,
           status: 'Active',
           assignedToUserId: assignedToUserId || null,
@@ -221,11 +223,11 @@ export default function NewCasePage() {
           //   contact: person.contact,
           //   addedOn: person.addedOn,
           // })),
-          evidences: evidences.map(evidence => ({
-            code: evidence.code,
-            type: evidence.type,
-            description: evidence.description,
-            dateCollected: evidence.dateCollected,
+          memos: memos.map(memo => ({
+            code: memo.code,
+            file: memo.file,
+            description: memo.description,
+            dateCollected: memo.dateCollected,
           })),
           notes: notes.map(note=>({
             code: note.code,
@@ -367,7 +369,7 @@ export default function NewCasePage() {
                 />
               </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
                 <div>
                   <label htmlFor="dateOfInstitution" className="block text-sm font-medium text-gray-700 mb-1">Date Of Institution</label>
                   <input 
@@ -385,6 +387,17 @@ export default function NewCasePage() {
                     type="datetime-local" 
                     id="nextDate" 
                     value={formData.nextDate}
+                    onChange={handleInputChange}
+                    className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 text-black"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="orderOfDate" className="block text-sm font-medium text-gray-700 mb-1">Order Of Date</label>
+                  <input 
+                    type="datetime-local" 
+                    id="orderOfDate" 
+                    value={formData.orderOfDate}
                     onChange={handleInputChange}
                     className="w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring focus:ring-blue-500 focus:ring-opacity-50 text-black"
                   />
@@ -502,22 +515,22 @@ export default function NewCasePage() {
                 </div>
               </div> */}
 
-              <div className="mb-6">
-                <h3 className="text-lg font-medium text-gray-800 mb-3">Evidence</h3>
+              {/* <div className="mb-6">
+                <h3 className="text-lg font-medium text-gray-800 mb-3">Memo Of Complaint</h3>
                 <div className="bg-gray-50 p-4 rounded-md border border-gray-200">
                   <div className="flex justify-between items-center mb-4">
                     <span className="text-sm font-medium text-gray-700">
-                      {evidences.length === 0 ? "No evidence added yet" : `${evidences.length} evidence item(s) added`}
+                      {memos.length === 0 ? "No Memo of complaint added yet" : `${memos.length} memo of complaint item(s) added`}
                     </span>
-                    <AddEvidenceModal onEvidenceAdded={handleEvidenceAdded}/>
+                    <AddMemoModal onMemoAdded={handleMemoAdded}/>
                   </div>
                   
-                  {evidences.length > 0 && (
+                  {memos.length > 0 && (
                     <div className="space-y-3">
-                      {evidences.map(item => (
+                      {memos.map(item => (
                         <div key={item.code} className="flex items-center justify-between bg-white p-3 rounded shadow-sm">
                           <div>
-                            <div className="font-medium text-gray-600">{item.type}</div>
+                            <div className="font-medium text-gray-600">{item.file.name}</div>
                             <div className="text-sm text-gray-500">
                               {item.description.length > 50 
                                 ? `${item.description.substring(0, 50)}...` 
@@ -526,7 +539,7 @@ export default function NewCasePage() {
                           </div>
                           <button 
                             type="button" 
-                            onClick={() => handleRemoveEvidence(item.code)}
+                            onClick={() => handleRemoveMemo(item.code)}
                             className="text-red-600 hover:text-red-800"
                           >
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -538,7 +551,7 @@ export default function NewCasePage() {
                     </div>
                   )}
                 </div>
-              </div>
+              </div> */}
 
               <div className="mb-6">
                 <h3 className="text-lg font-medium text-gray-800 mb-3">Add Note</h3>
