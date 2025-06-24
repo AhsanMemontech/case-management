@@ -70,6 +70,7 @@ export default function NewCasePage() {
   //const [persons, setPersons] = useState<Array<{ id?: string, code: string, name: string, role: string, contact: string, addedOn: string }>>([]);
   const [memos, setMemos] = useState<Array<{ id?: string, code: string, file: File, description: string, dateCollected: string }>>([]);
   const [notes, setNotes] = useState<Array<{ id?: string, code: string, title: string, content: string, noteAddedOn: string }>>([]);
+  const [caseId, setCaseId] = useState<string>('');
 
   // Handle form input changes
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
@@ -89,8 +90,9 @@ export default function NewCasePage() {
   //   setPersons([...persons, newPerson]);
   // };
 
-  const handleMemoAdded = (newMemo: { id?: string, code: string, file: File, description: string, dateCollected: string }) => {
+  const handleMemoAdded = (newMemo: { id?: string, code: string, caseId: string, file: File, description: string, dateCollected: string }) => {
     setMemos([...memos, newMemo]);
+    setCaseId(newMemo.caseId || '');
   };
 
   const handleNoteAdded = (newNote: { id?: string, code: string, title: string, content: string, noteAddedOn: string }) => {
@@ -189,63 +191,109 @@ export default function NewCasePage() {
     setIsSubmitting(true);
 
     try {
-      
-      //First, create the case
-      const caseResponse = await fetch('/api/cases', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        }, 
-        body: JSON.stringify({
-          code: formData.code,
-          caseType: formData.caseType,
-          // priority: formData.priority,
-          title: formData.title,
-          location: formData.location,
-          nextDate: formData.nextDate,
-          dateOfInstitution: formData.dateOfInstitution,
-          orderOfDate: formData.orderOfDate,
-          description: formData.description,
-          status: 'Active',
-          assignedToUserId: assignedToUserId || null,
-          userId: user?.id,
-          talukaId: formData.talukaId,
-          dehId: formData.dehId,
-          // involvedOfficers: officers.map(officer => ({
-          //   code: officer.code,
-          //   name: officer.name,
-          //   badge: officer.badge,
-          // })),
-          // involvedPersons: persons.map(person => ({
-          //   code: person.code,
-          //   name: person.name,
-          //   role: person.role,
-          //   contact: person.contact,
-          //   addedOn: person.addedOn,
-          // })),
-          memos: memos.map(memo => ({
-            code: memo.code,
-            file: memo.file,
-            description: memo.description,
-            dateCollected: memo.dateCollected,
-          })),
-          notes: notes.map(note=>({
-            code: note.code,
-            title: note.title,
-            content: note.content,
-            noteAddedOn: note.noteAddedOn,
-          })),
-        }),
-      });
 
-      if (!caseResponse.ok) {
-        const errorData = await caseResponse.json().catch(() => ({}));
-        console.error('Server response:', errorData);
-        throw new Error(`Failed to create case: ${caseResponse.status} ${caseResponse.statusText}${errorData.error ? ` - ${errorData.error}` : ''}`);
+      if(caseId !== null && caseId !== undefined && caseId !== "") {
+        //Update the case
+        const caseResponse = await fetch(`/api/cases/${caseId}`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            caseType: formData.caseType,
+            title: formData.title,
+            location: formData.location,
+            nextDate: formData.nextDate,
+            dateOfInstitution: formData.dateOfInstitution,
+            orderOfDate: formData.orderOfDate,
+            description: formData.description,
+            status: 'Active',
+            assignedToUserId: assignedToUserId || null,
+            userId: user?.id,
+            talukaId: formData.talukaId,
+            dehId: formData.dehId,
+            memos: memos.map(memo => ({
+              code: memo.code,
+              file: memo.file,
+              description: memo.description,
+              dateCollected: memo.dateCollected,
+            })),
+            notes: notes.map(note=>({
+              code: note.code,
+              title: note.title,
+              content: note.content,
+              noteAddedOn: note.noteAddedOn,
+            })),
+          }),
+        });
+
+        if (!caseResponse.ok) {
+          throw new Error(`Failed to update case: ${caseResponse.status}`);
+        }
+
+        router.push(`/cases/${caseId}`);
       }
-
-      const caseData = await caseResponse.json();
-      router.push(`/cases/${caseData.id}`);
+      else{
+        
+        //First, create the case
+        const caseResponse = await fetch('/api/cases', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          }, 
+          body: JSON.stringify({
+            code: formData.code,
+            caseType: formData.caseType,
+            // priority: formData.priority,
+            title: formData.title,
+            location: formData.location,
+            nextDate: formData.nextDate,
+            dateOfInstitution: formData.dateOfInstitution,
+            orderOfDate: formData.orderOfDate,
+            description: formData.description,
+            status: 'Active',
+            assignedToUserId: assignedToUserId || null,
+            userId: user?.id,
+            talukaId: formData.talukaId,
+            dehId: formData.dehId,
+            // involvedOfficers: officers.map(officer => ({
+            //   code: officer.code,
+            //   name: officer.name,
+            //   badge: officer.badge,
+            // })),
+            // involvedPersons: persons.map(person => ({
+            //   code: person.code,
+            //   name: person.name,
+            //   role: person.role,
+            //   contact: person.contact,
+            //   addedOn: person.addedOn,
+            // })),
+            memos: memos.map(memo => ({
+              code: memo.code,
+              file: memo.file,
+              description: memo.description,
+              dateCollected: memo.dateCollected,
+            })),
+            notes: notes.map(note=>({
+              code: note.code,
+              title: note.title,
+              content: note.content,
+              noteAddedOn: note.noteAddedOn,
+            })),
+          }),
+        });
+  
+        if (!caseResponse.ok) {
+          const errorData = await caseResponse.json().catch(() => ({}));
+          console.error('Server response:', errorData);
+          throw new Error(`Failed to create case: ${caseResponse.status} ${caseResponse.statusText}${errorData.error ? ` - ${errorData.error}` : ''}`);
+        }
+  
+        const caseData = await caseResponse.json();
+        setCaseId(caseData.id || '');
+        router.push(`/cases/${caseData.id}`);
+      }
+      
     }
     catch (error) {
       console.error('Error creating case:', error);
@@ -515,14 +563,14 @@ export default function NewCasePage() {
                 </div>
               </div> */}
 
-              {/* <div className="mb-6">
+              <div className="mb-6">
                 <h3 className="text-lg font-medium text-gray-800 mb-3">Memo Of Complaint</h3>
                 <div className="bg-gray-50 p-4 rounded-md border border-gray-200">
                   <div className="flex justify-between items-center mb-4">
                     <span className="text-sm font-medium text-gray-700">
                       {memos.length === 0 ? "No Memo of complaint added yet" : `${memos.length} memo of complaint item(s) added`}
                     </span>
-                    <AddMemoModal onMemoAdded={handleMemoAdded}/>
+                    <AddMemoModal id={caseId || ""} onMemoAdded={handleMemoAdded}/>
                   </div>
                   
                   {memos.length > 0 && (
@@ -551,7 +599,7 @@ export default function NewCasePage() {
                     </div>
                   )}
                 </div>
-              </div> */}
+              </div>
 
               <div className="mb-6">
                 <h3 className="text-lg font-medium text-gray-800 mb-3">Add Note</h3>
