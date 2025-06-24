@@ -79,6 +79,7 @@ export async function PUT(
       nextDate, 
       location, 
       description,
+      assignedToUserId,
       //involvedOfficers,
       //involvedPersons,
       memos,
@@ -110,10 +111,67 @@ export async function PUT(
         notes: true,
       },
     });
-    
-    // For a more complex update with relationships, you might want to use a transaction
-    // This is a simplified version - you may need to handle relationship updates separately
-    
+
+    // Handle user assignment if provided
+    if (data.userId && data.assignedToUserId) {
+      // Check if user assignment already exists
+      const existingUserCase = await prisma.userCases.findFirst({
+        where: {
+          caseId: caseId,
+          userId: data.userId
+        }
+      });
+
+      if (existingUserCase) {
+        // Update existing user case
+        await prisma.userCases.update({
+          where: {
+            id: existingUserCase.id
+          },
+          data: {
+            assignedToUserId: data.assignedToUserId,
+            status: true
+          }
+        });
+      } else {
+        // Create new user case
+        await prisma.userCases.create({
+          data: {
+            userId: data.userId,
+            caseId: caseId,
+            assignedToUserId: data.assignedToUserId,
+            status: true,
+          },
+        });
+      }
+    }
+
+    // Add notes if any (only if they don't already exist)
+    if (data.notes && data.notes.length > 0) {
+      for (const note of data.notes) {
+        // Check if note already exists
+        const existingNote = await prisma.notes.findFirst({
+          where: {
+            caseId: caseId,
+            code: note.code
+          }
+        });
+
+        if (!existingNote) {
+          await prisma.notes.create({
+            data: {
+              code: note.code,
+              title: note.title,
+              content: note.content,
+              caseId: caseId,
+            },
+          });
+        }
+      }
+    }
+
+    console.log(data);
+
     return NextResponse.json(updatedCase);
   } catch (error) {
     console.error('Error updating case:', error);

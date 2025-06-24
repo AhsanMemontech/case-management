@@ -67,7 +67,43 @@ export default function AddMemoModal({ id, onMemoAdded }: AddMemoModalProps) {
         dateCollected: dateCollected == "" ? getCurrentLocalDatetime() : dateCollected,
         caseId: id as string
       };
+ 
+      if(newMemo.caseId === null || newMemo.caseId === undefined || newMemo.caseId === "") {
+        //First, create the case
+        const caseResponse = await fetch('/api/cases', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          }, 
+          body: JSON.stringify({
+            code: `CASE-${Date.now()}` as string,
+            caseType: "",
+            title: "",
+            location: "",
+            nextDate: getCurrentLocalDatetime() as string,
+            dateOfInstitution: getCurrentLocalDatetime() as string,
+            orderOfDate: getCurrentLocalDatetime() as string,
+            description: "",
+            status: 'Active',
+            assignedToUserId: "",
+            userId: "",
+            talukaId: "",
+            dehId: "",
+            memos: [],
+            notes: [],
+          }),
+        });
   
+        if (!caseResponse.ok) {
+          const errorData = await caseResponse.json().catch(() => ({}));
+          console.error('Server response:', errorData);
+          throw new Error(`Failed to create case: ${caseResponse.status} ${caseResponse.statusText}${errorData.error ? ` - ${errorData.error}` : ''}`);
+        }
+  
+        const caseData = await caseResponse.json();
+        newMemo.caseId = caseData.id;
+      }
+      
       if(newMemo.caseId !== null && newMemo.caseId !== undefined && newMemo.caseId !== "") {
         // Create FormData for file upload
         const formData = new FormData();
